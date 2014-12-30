@@ -11,9 +11,9 @@ from django.core.wsgi import get_wsgi_application
 import os
 
 if os.environ.get('DEPLOY_ENVIRONMENT') == 'heroku':
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings.production")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "foxfoi.settings.production")
     from dj_static import Cling
     application = Cling(get_wsgi_application())
 else:
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings.local")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "foxfoi.settings.local")
     application = get_wsgi_application()
