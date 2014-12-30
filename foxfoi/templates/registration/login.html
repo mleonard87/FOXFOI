@@ -1,0 +1,18 @@
+{% extends "foxfoi/base.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="large-12 columns">
+
+            <div class="panel">
+                <h1>FOX FOI</h1>
+                <p>
+                    Welcome to FOX FOI!  Click Login with Google below to get started.
+                </p>
+                <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="button">Login with Google</a>
+            </div>
+
+        </div>
+
+{% endblock %}
