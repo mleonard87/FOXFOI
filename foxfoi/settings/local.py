@@ -6,7 +6,7 @@ import json
 
 from django.core.exceptions import ImproperlyConfigured
 
-SECRETS_LOC = os.path.join(BASE_DIR, 'settings', 'secrets.json')
+SECRETS_LOC = os.path.join(PROJECT_DIR, 'settings', 'secrets.json')
 
 with open(SECRETS_LOC) as f:
     secrets = json.loads(f.read())

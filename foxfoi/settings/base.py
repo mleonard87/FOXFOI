@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+PROJECT_DIR = os.path.join(BASE_DIR, 'foxfoi')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
@@ -60,10 +61,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 LOGIN_REDIRECT_URL = '/foi/'
 
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+TEMPLATE_DIRS = [os.path.join(PROJECT_DIR, 'templates')]
 
-STATIC_FOUNDATION = os.path.join(os.path.join(BASE_DIR, 'static'), 'foundation')
-STATIC_JQUERYUI = os.path.join(os.path.join(BASE_DIR, 'static'), 'jquery-ui')
+STATIC_FOUNDATION = os.path.join(os.path.join(PROJECT_DIR, 'static'), 'foundation')
+STATIC_JQUERYUI = os.path.join(os.path.join(PROJECT_DIR, 'static'), 'jquery-ui')
 STATIC_FOI = os.path.join(os.path.join(os.path.join(BASE_DIR, 'foi'), 'static'), 'foi')
 STATICFILES_DIRS = (
     ('css', os.path.join(STATIC_FOUNDATION, 'css')),

@@ -3,7 +3,18 @@
 {% block content %}
     <div class="row">
         <div class="large-12 columns">
-            <h1>FOI</h1>
+            <h1>FOI Cases</h1>
+            <p><a href="{% url 'foi:new_case' %}">Add New</a></p>
+            {% for case in cases %}
+                <hr/>
+                <div class="indexItemContainer">
+                    <span class="indexItemTitle"><a href="{% url 'foi:edit_case' case.id %}">{{ case.title }}</a></span>
+                    <span class="indexLinks">
+                        {% block deleteLinkMaster %}[<a href="{% url 'foi:delete_case' case.id %}">Delete</a>]{% endblock %}
+                    </span>
+                    {% block createDateMaster %}<span class="createdDate">Created on {{ case.created_date }}</span>{% endblock %}
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
