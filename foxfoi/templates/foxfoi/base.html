@@ -18,15 +18,21 @@
                         <h1><a href="{% url 'foi:index_case' %}">FOX FOI</a></h1>
                     </li>
                 </ul>
-                <section class="top-bar-section">
-                    <ul class="right">
-                        {% if user.is_authenticated %}
+                {% if user.is_authenticated %}
+                    <section class="top-bar-section">
+                        <ul class="left">
+                            <li class="divider"></li>
+                            <li><a href="{% url 'mp:index_mp' %}">MPs</a></li>
+                        </ul>
+                    </section>
+                    <section class="top-bar-section">
+                        <ul class="right">
                             <li><a href="#">{{ user.username }}</a></li>
                             <li class="divider"></li>
                             <li><a href="{% url 'logout' %}">Log Out</a></li>
-                        {% endif %}
-                    </ul>
-                </section>
+                        </ul>
+                    </section>
+                {% endif %}
             </nav>
         </div>
 

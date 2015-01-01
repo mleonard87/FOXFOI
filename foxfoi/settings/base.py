@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
     'foi',
+    'mp',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -65,14 +66,14 @@ TEMPLATE_DIRS = [os.path.join(PROJECT_DIR, 'templates')]
 
 STATIC_FOUNDATION = os.path.join(os.path.join(PROJECT_DIR, 'static'), 'foundation')
 STATIC_JQUERYUI = os.path.join(os.path.join(PROJECT_DIR, 'static'), 'jquery-ui')
-STATIC_FOI = os.path.join(os.path.join(os.path.join(BASE_DIR, 'foi'), 'static'), 'foi')
+STATIC_APPLICATION = os.path.join(os.path.join(PROJECT_DIR, 'static'), 'application')
 STATICFILES_DIRS = (
     ('css', os.path.join(STATIC_FOUNDATION, 'css')),
     ('css', os.path.join(STATIC_FOUNDATION, 'foundation-icons')),
     ('js', os.path.join(STATIC_FOUNDATION, 'js')),
     ('js', os.path.join(STATIC_JQUERYUI, 'js')),
-    ('css', os.path.join(STATIC_FOI, 'css')),
-    ('js', os.path.join(STATIC_FOI, 'js')),
+    ('css', os.path.join(STATIC_APPLICATION, 'css')),
+    ('js', os.path.join(STATIC_APPLICATION, 'js')),
 )
 
 ROOT_URLCONF = 'foxfoi.urls'

@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
-from ajax import *
+from foxfoi.ajax import *
 
 from foi.models import Case
 from foi.forms import CaseForm
@@ -10,7 +10,7 @@ from foi.forms import CaseForm
 @login_required
 def index_case(request):
     cases = Case.objects.order_by('-created_date')
-    return render(request, 'foi/index.html', {'cases': cases})
+    return render(request, 'foi/index.html', {'indexitems': cases})
 
 @login_required
 def new_case(request):

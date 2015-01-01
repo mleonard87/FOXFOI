@@ -1,0 +1,20 @@
+{% extends "foxfoi/base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>{% block pagetitle %}{% endblock %}</h1>
+            <p><a href="{% block newitemlink %}{% endblock %}">Add New</a></p>
+            {% for indexitem in indexitems %}
+                <hr/>
+                <div class="indexItemContainer">
+                    <span class="indexItemTitle"><a href="{% block edititemlink %}{% endblock %}">{% block editItemDisplayName %}{% endblock %}</a></span>
+                    <span class="indexLinks">
+                        {% block deleteLinkMaster %}[<a href="{% block deleteLink %}{% endblock %}">Delete</a>]{% endblock %}
+                    </span>
+                    {% block additionalInfoMaster %}<span class="additionalInfo">{% block additionalInfo %}{% endblock %}</span>{% endblock %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
