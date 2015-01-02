@@ -1,0 +1,12 @@
+{% extends "foxfoi/base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="large-12 columns">
+            <input id="active_page" type="hidden" value="{% block activepage %}{% endblock %}"/>
+            <br/>
+            {% include "foi/case_sections.html" %}
+            {% block case_content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

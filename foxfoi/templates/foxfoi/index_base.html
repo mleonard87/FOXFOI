@@ -1,10 +1,11 @@
 {% extends "foxfoi/base.html" %}
 
 {% block content %}
+    {% block preContent %}{% endblock %}
     <div class="row">
         <div class="large-12 columns">
-            <h1>{% block pagetitle %}{% endblock %}</h1>
-            <p><a href="{% block newitemlink %}{% endblock %}">Add New</a></p>
+            {% block pagetitleMaster %}<h1>{% block pagetitle %}{% endblock %}</h1>{% endblock %}
+            {% block newitemMaster %}<p><a href="{% block newitemlink %}{% endblock %}">Add New</a></p>{% endblock %}
             {% for indexitem in indexitems %}
                 <hr/>
                 <div class="indexItemContainer">
