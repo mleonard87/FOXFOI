@@ -81,3 +81,23 @@ def delete_comment(request, case_id, comment_id):
         return HttpResponseRedirect(reverse('foi:case_comments', args = (case_id,)))
     else:
         return render(request, 'foi/delete_comment.html', {'case': case, 'comment': comment})
+
+@login_required
+def case_outcome(request, case_id):
+    case = get_object_or_404(Case, pk = case_id)
+    return render(request, 'foi/outcome.html', {'case': case})
+
+@login_required
+def case_ir(request, case_id):
+    case = get_object_or_404(Case, pk = case_id)
+    return render(request, 'foi/ir.html', {'case': case})
+
+@login_required
+def case_ica(request, case_id):
+    case = get_object_or_404(Case, pk = case_id)
+    return render(request, 'foi/ica.html', {'case': case})
+
+@login_required
+def case_aat(request, case_id):
+    case = get_object_or_404(Case, pk = case_id)
+    return render(request, 'foi/aat.html', {'case': case})
