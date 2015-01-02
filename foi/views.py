@@ -2,10 +2,11 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 from foxfoi.ajax import *
 
-from foi.models import Case, Comment
-from foi.forms import CaseForm, CommentForm
+from foi.models import Case, Comment, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
+from foi.forms import CaseForm, CommentForm, InternalReviewForm, InformationCommissionerAppealForm, AdministrativeAppealsTribunalForm
 
 @login_required
 def index_case(request):
@@ -90,14 +91,50 @@ def case_outcome(request, case_id):
 @login_required
 def case_ir(request, case_id):
     case = get_object_or_404(Case, pk = case_id)
-    return render(request, 'foi/ir.html', {'case': case})
+    if request.method == 'POST':
+        ir = get_object_or_404(InternalReview, case = case_id)
+        form = InternalReviewForm(request.POST, instance = ir)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('foi:case_internal_review', args = (case_id,)))
+    else:
+        try:
+            ir = InternalReview.objects.get(case = case_id)
+        except ObjectDoesNotExist:
+            ir = InternalReview.objects.create_internal_review(case)
+        form = InternalReviewForm(instance = ir)
+    return render(request, 'foi/ir.html', {'case': case, 'form': form})
 
 @login_required
 def case_ica(request, case_id):
     case = get_object_or_404(Case, pk = case_id)
-    return render(request, 'foi/ica.html', {'case': case})
+    if request.method == 'POST':
+        ica = get_object_or_404(InformationCommissionerAppeal, case = case_id)
+        form = InformationCommissionerAppealForm(request.POST, instance = ica)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('foi:case_ica', args = (case_id,)))
+    else:
+        try:
+            ica = InformationCommissionerAppeal.objects.get(case = case_id)
+        except ObjectDoesNotExist:
+            ica = InformationCommissionerAppeal.objects.create_information_commissioner_appeal(case)
+        form = InformationCommissionerAppealForm(instance = ica)
+    return render(request, 'foi/ica.html', {'case': case, 'form': form})
 
 @login_required
 def case_aat(request, case_id):
     case = get_object_or_404(Case, pk = case_id)
-    return render(request, 'foi/aat.html', {'case': case})
+    if request.method == 'POST':
+        aat = get_object_or_404(AdministrativeAppealsTribunal, case = case_id)
+        form = AdministrativeAppealsTribunalForm(request.POST, instance = aat)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('foi:case_aat', args = (case_id,)))
+    else:
+        try:
+            aat = AdministrativeAppealsTribunal.objects.get(case = case_id)
+        except ObjectDoesNotExist:
+            aat = AdministrativeAppealsTribunal.objects.create_administrative_appeals_tribunal(case)
+        form = AdministrativeAppealsTribunalForm(instance = aat)
+    return render(request, 'foi/aat.html', {'case': case, 'form': form})

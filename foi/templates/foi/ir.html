@@ -5,7 +5,60 @@
 {% block case_content %}
     <div class="row">
         <div class="large-12 columns">
-            Some ir content will go here
+            <form action="" method="post">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_requested_date" class="{% if form.requested_date.errors %}error{% endif %}"/>Requested Date:
+                        {{ form.requested_date }}
+                        </label>
+                        {% if form.requested_date.errors %}
+                        <small class="error">Please fill in the requested date</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_review_held_date" class="{% if form.review_held_date.errors %}error{% endif %}"/>Review Held Date:
+                        {{ form.review_held_date }}
+                        </label>
+                        {% if form.review_held_date.errors %}
+                        <small class="error">Please fill in the review held date</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_days_taken_to_hold_review" class="{% if form.days_taken_to_hold_review.errors %}error{% endif %}"/>Days Taken to Hold Review:
+                        {{ form.days_taken_to_hold_review }}
+                        </label>
+                        {% if form.days_taken_to_hold_review.errors %}
+                        <small class="error">Please fill in the days taken to hold review</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_review_members" class="{% if form.review_members.errors %}error{% endif %}"/>Review Members:
+                        {{ form.review_members }}
+                        </label>
+                        {% if form.review_members.errors %}
+                        <small class="error">Please fill in the review members</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_review_decision" class="{% if form.review_decision.errors %}error{% endif %}"/>Review Decision:
+                        {{ form.review_decision }}
+                        </label>
+                        {% if form.review_decision.errors %}
+                        <small class="error">Please fill in the review decision</small>
+                        {% endif %}
+                    </div>
+                </div>
+                {% csrf_token %}
+                <input type="submit" value="Save" class="button">
+            </form>
         </div>
     </div>
 {% endblock %}
