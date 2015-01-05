@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from mp import views
+from mps import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index_mp, name = 'index_mp'),

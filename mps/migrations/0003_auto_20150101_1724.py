@@ -7,7 +7,7 @@ import os, json
 def generateMPs(apps, schema_editor):
     # We can't import the MP model directly as it may be a newer
     # version than this migration expects. We use the historical version.
-    MP = apps.get_model("mp", "MP")
+    MP = apps.get_model("mps", "MP")
     mp_list = open(os.path.join(os.path.join(os.path.dirname(__file__), 'migration_data'), 'mp_list.json'))
     mp_json = json.load(mp_list)
     for mp in MP.objects.all():
@@ -26,7 +26,7 @@ def generateMPs(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mp', '0002_auto_20150101_1628'),
+        ('mps', '0002_auto_20150101_1628'),
     ]
 
     operations = [

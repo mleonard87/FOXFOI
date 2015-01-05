@@ -1,5 +1,5 @@
 from django import forms
-from mp.models import MP
+from mps.models import MP
 
 class MPForm(forms.ModelForm):
     class Meta:
