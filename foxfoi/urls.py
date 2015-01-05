@@ -8,6 +8,6 @@ urlpatterns = patterns('',
     url(r'^accounts/logout/$', logout_then_login, name="logout"),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^foi/', include('foi.urls', namespace = 'foi')),
-    url(r'^mp/', include('mp.urls', namespace = 'mp')),
+    url(r'^mps/', include('mps.urls', namespace = 'mps')),
     url(r'^$', include('foi.urls', namespace = 'foi')),
 )

@@ -1,0 +1,74 @@
+{% extends "foxfoi/base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>New MP</h1>
+            <form action="" method="post">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_title" class="{% if form.title.errors %}error{% endif %}"/>Title:
+                        {{ form.title }}
+                        </label>
+                        {% if form.title.errors %}
+                        <small class="error">Please enter a title</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_name" class="{% if form.name.errors %}error{% endif %}"/>Name:
+                        {{ form.name }}
+                        </label>
+                        {% if form.name.errors %}
+                        <small class="error">Please enter a name</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_party" class="{% if form.party.errors %}error{% endif %}"/>Party:
+                        {{ form.party }}
+                        </label>
+                        {% if form.party.errors %}
+                        <small class="error">Please enter a party</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_constituency" class="{% if form.constituency.errors %}error{% endif %}"/>Constituency:
+                        {{ form.constituency }}
+                        </label>
+                        {% if form.constituency.errors %}
+                        <small class="error">Please enter a constituency</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_address" class="{% if form.address.errors %}error{% endif %}"/>Address:
+                        {{ form.address }}
+                        </label>
+                        {% if form.address.errors %}
+                        <small class="error">Please enter an address</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_postcode" class="{% if form.postcode.errors %}error{% endif %}"/>Postcode:
+                        {{ form.postcode }}
+                        </label>
+                        {% if form.postcode.errors %}
+                        <small class="error">Please enter a postcode</small>
+                        {% endif %}
+                    </div>
+                </div>
+                {% csrf_token %}
+                <input type="submit" value="Create" class="button">
+                <a href="{% url 'mps:index_mp' %}" class="button">Cancel</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
