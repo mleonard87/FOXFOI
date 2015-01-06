@@ -18,7 +18,7 @@ class KeyTerm(models.Model):
         ('INACTIVE', 'Inactive')
     )
 
-    name = models.CharField(max_length = 20, unique = True, error_messages={'unique': 'A Key Term already exists with this name'})
+    name = models.CharField(max_length = 50, unique = True, error_messages={'unique': 'A Key Term already exists with this name'})
     status = models.CharField(max_length = 10, choices = STATUS)
     parent = models.ForeignKey('self', null = True, blank = True)
 
