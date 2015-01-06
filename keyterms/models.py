@@ -14,12 +14,12 @@ class KeyTermManager(models.Manager):
 class KeyTerm(models.Model):
 
     STATUS = (
-        ('A', 'Active'),
-        ('I', 'Inactive')
+        ('ACTIVE', 'Active'),
+        ('INACTIVE', 'Inactive')
     )
 
     name = models.CharField(max_length = 20, unique = True, error_messages={'unique': 'A Key Term already exists with this name'})
-    status = models.CharField(max_length = 1, choices = STATUS)
+    status = models.CharField(max_length = 10, choices = STATUS)
     parent = models.ForeignKey('self', null = True, blank = True)
 
     def change_status(self):
