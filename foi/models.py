@@ -33,7 +33,25 @@ class AdministrativeAppealsTribunalManager(models.Manager):
         return aat
 
 class Case(models.Model):
+
+    CORRESPONDENCE_METHOD = (
+        ('EMAIL', 'Email'),
+        ('LETTER', 'Letter'),
+        ('PHONE', 'Phone'),
+        ('FAX', 'Fax')
+    )
+
     title = models.CharField(max_length = 100)
+    subject = models.CharField(max_length = 250, blank = True, default = "")
+    received_date = models.DateField(blank = True, null = True)
+    enquiry_date = models.DateField(blank = True, null = True)
+    enquiry_ref = models.CharField(max_length = 50, blank = True, default = "")
+    enquiry_method = models.CharField(max_length = 20, choices = CORRESPONDENCE_METHOD, blank = True, default = "")
+    response_method = models.CharField(max_length = 20, choices = CORRESPONDENCE_METHOD, blank = True, default = "")
+    enquiry_description = models.CharField(max_length = 200, blank = True, default = "")
+    urgent_flag = models.BooleanField(default = False)
+    handling_instructions = models.CharField(max_length = 200, blank = True, default = "")
+    addressee_name = models.CharField(max_length = 100, blank = True, default = "")
     created_date = models.DateTimeField()
     created_by = models.ForeignKey(User)
 

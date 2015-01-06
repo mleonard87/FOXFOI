@@ -4,16 +4,18 @@
 
 {% block case_content %}
     <form action="" method="post">
-        <div class="row">
-            <div class="large-12 columns">
-                <label for="id_name" class="{% if form.title.errors %}error{% endif %}"/>Title:
-                {{ form.title }}
-                </label>
-                {% if form.title.errors %}
-                <small class="error">Please enter a title for this case</small>
-                {% endif %}
+        {% for field in form %}
+            <div class="row">
+                <div class="large-12 columns">
+                    <label class="{% if field.errors %}error{% endif %}">{{ field.label_tag }}
+                    {{ field }}
+                    </label>
+                    {% if field.errors %}
+                        <small class="error">{{ field.errors }}</small>
+                    {% endif %}
+                </div>
             </div>
-        </div>
+        {% endfor %}
         {% csrf_token %}
         <input type="submit" value="Save" class="button">
         <a href="{% url 'foi:index_case' %}" class="button">Cancel</a>

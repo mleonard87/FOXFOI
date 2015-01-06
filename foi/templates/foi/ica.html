@@ -6,56 +6,18 @@
     <div class="row">
         <div class="large-12 columns">
             <form action="" method="post">
-                <div class="row">
-                    <div class="large-12 columns">
-                        <label for="id_contacted_date" class="{% if form.contacted_date.errors %}error{% endif %}"/>Contacted Date:
-                        {{ form.contacted_date }}
-                        </label>
-                        {% if form.contacted_date.errors %}
-                        <small class="error">Please fill in the contacted date</small>
-                        {% endif %}
+                {% for field in form %}
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label class="{% if field.errors %}error{% endif %}">{{ field.label_tag }}
+                            {{ field }}
+                            </label>
+                            {% if field.errors %}
+                                <small class="error">{{ field.errors }}</small>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="large-12 columns">
-                        <label for="id_documents_provided_date" class="{% if form.documents_provided_date.errors %}error{% endif %}"/>Documents Provided Date:
-                        {{ form.documents_provided_date }}
-                        </label>
-                        {% if form.documents_provided_date.errors %}
-                        <small class="error">Please fill in the documents provided date</small>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="large-12 columns">
-                        <label for="id_decision_recieved_date" class="{% if form.decision_recieved_date.errors %}error{% endif %}"/>Decision Recieved Date:
-                        {{ form.decision_recieved_date }}
-                        </label>
-                        {% if form.decision_recieved_date.errors %}
-                        <small class="error">Please fill in the decision recieved date</small>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="large-12 columns">
-                        <label for="id_decision" class="{% if form.decision.errors %}error{% endif %}"/>Decision:
-                        {{ form.decision }}
-                        </label>
-                        {% if form.decision.errors %}
-                        <small class="error">Please fill in the decision</small>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="large-12 columns">
-                        <label for="id_decision_notice" class="{% if form.decision_notice.errors %}error{% endif %}"/>Decision Notice:
-                        {{ form.decision_notice }}
-                        </label>
-                        {% if form.decision_notice.errors %}
-                        <small class="error">Please fill in the decision notice</small>
-                        {% endif %}
-                    </div>
-                </div>
+                {% endfor %}
                 {% csrf_token %}
                 <input type="submit" value="Save" class="button">
             </form>

@@ -32,7 +32,7 @@ def edit_case(request, case_id):
         form = CaseForm(request.POST, instance = case)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('foi:index_case'))
+            return HttpResponseRedirect(reverse('foi:edit_case', args = (case_id,)))
     else:
         form = CaseForm(instance = case)
     return render(request, 'foi/edit.html', {'case': case, 'form': form})

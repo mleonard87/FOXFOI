@@ -4,7 +4,18 @@ from foi.models import Case, Comment, InternalReview, InformationCommissionerApp
 class CaseForm(forms.ModelForm):
     class Meta:
         model = Case
-        fields = ['title']
+        fields = [
+            'title', 
+            'subject', 
+            'received_date', 
+            'enquiry_date', 
+            'enquiry_ref', 
+            'enquiry_method', 
+            'response_method', 
+            'enquiry_description', 
+            'urgent_flag', 
+            'handling_instructions',
+            'addressee_name']
         widgets = {
             'title': forms.TextInput(attrs = {'placeholder': 'Enter a title for this case'})
         }
