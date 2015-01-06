@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^foi/', include('foi.urls', namespace = 'foi')),
     url(r'^mps/', include('mps.urls', namespace = 'mps')),
+    url(r'^keyterms/', include('keyterms.urls', namespace = 'keyterms')),
     url(r'^$', include('foi.urls', namespace = 'foi')),
 )

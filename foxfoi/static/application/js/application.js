@@ -5,4 +5,8 @@ function setActiveCaseSection(activeSection) {
 
 $(document).ready(function() {
     setActiveCaseSection($("#active_page").val());
+
+    $(".keyterm-status").on("click", function() {
+        $(this).parents(".keyterm-change-status-form").submit();
+    });
 });

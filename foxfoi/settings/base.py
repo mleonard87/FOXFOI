@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'social.apps.django_app.default',
     'foi',
     'mps',
+    'keyterms',
 )
 
 MIDDLEWARE_CLASSES = (

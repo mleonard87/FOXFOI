@@ -26,7 +26,7 @@ div.indexItemContainer > span.indexItemTitle {
   padding-bottom: 5px;
 }
 
-div.indexItemContainer > span.additionalInfo {
+div.indexItemContainer > .additionalInfo {
   display: block;
   padding-top: 5px;
   font-size: 0.9em;
