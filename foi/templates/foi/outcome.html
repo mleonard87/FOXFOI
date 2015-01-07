@@ -5,7 +5,63 @@
 {% block case_content %}
     <div class="row">
         <div class="large-12 columns">
-            Some outcome content will go here
+            <form action="" method="post">
+                <h3>List A (Specific Outcomes)</h3>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label class="{% if form.foi_outcomes.errors %}error{% endif %}">Specific Outcome
+                        {{ form.foi_outcomes }}
+                        </label>
+                        {% if form.foi_outcomes.errors %}
+                            <small class="error">{{ form.foi_outcomes.errors }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <h3>List B (Exemptions/Exception/Certificates)</h3>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label class="{% if form.foi_exemptions.errors %}error{% endif %}">FOI Exemption
+                        {{ form.foi_exemptions }}
+                        </label>
+                        {% if form.foi_exemptions.errors %}
+                            <small class="error">{{ form.foi_exemptions.errors }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label class="{% if form.foi_conditional_exemptions.errors %}error{% endif %}">FOI Conditional Exemption
+                        {{ form.foi_conditional_exemptions }}
+                        </label>
+                        {% if form.foi_conditional_exemptions.errors %}
+                            <small class="error">{{ form.foi_conditional_exemptions.errors }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label class="{% if form.certificates.errors %}error{% endif %}">Certificate
+                        {{ form.certificates }}
+                        </label>
+                        {% if form.certificates.errors %}
+                            <small class="error">{{ form.certificates.errors }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <h3>List C (Disclosure Outcomes)</h3>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label class="{% if form.disclosure_outcomes.errors %}error{% endif %}">Disclosure Outcome
+                        {{ form.disclosure_outcomes }}
+                        </label>
+                        {% if form.disclosure_outcomes.errors %}
+                            <small class="error">{{ form.disclosure_outcomes.errors }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+                {% csrf_token %}
+                <input type="submit" value="Save" class="button">
+            </form>
         </div>
     </div>
 {% endblock %}

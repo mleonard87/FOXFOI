@@ -5,8 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from foxfoi.ajax import *
 
-from foi.models import Case, Comment, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
-from foi.forms import CaseForm, CommentForm, InternalReviewForm, InformationCommissionerAppealForm, AdministrativeAppealsTribunalForm
+from foi.models import Case, Comment, Outcome, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
+from foi.forms import CaseForm, CommentForm, OutcomeForm, InternalReviewForm, InformationCommissionerAppealForm, AdministrativeAppealsTribunalForm
 
 @login_required
 def index_case(request):
@@ -86,7 +86,19 @@ def delete_comment(request, case_id, comment_id):
 @login_required
 def case_outcome(request, case_id):
     case = get_object_or_404(Case, pk = case_id)
-    return render(request, 'foi/outcome.html', {'case': case})
+    if request.method == 'POST':
+        outcome = get_object_or_404(Outcome, case = case_id)
+        form = OutcomeForm(request.POST, instance = outcome)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('foi:case_outcome', args = (case_id,)))
+    else:
+        try:
+            outcome = Outcome.objects.get(case = case_id)
+        except ObjectDoesNotExist:
+            outcome = Outcome.objects.create_outcome(case)
+        form = OutcomeForm(instance = outcome)
+    return render(request, 'foi/outcome.html', {'case': case, 'form': form})
 
 @login_required
 def case_ir(request, case_id):

@@ -1,6 +1,6 @@
 from django import forms
 from django.utils import timezone
-from foi.models import Case, Comment, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
+from foi.models import Case, Comment, Outcome, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
 
 class CaseForm(forms.ModelForm):
     class Meta:
@@ -35,6 +35,11 @@ class CommentForm(forms.ModelForm):
             'subject': forms.TextInput(attrs = {'placeholder': 'Enter a subject for this comment'}),
             'body': forms.Textarea(attrs = {'placeholder': 'Enter a body for this comment'})
         }
+
+class OutcomeForm(forms.ModelForm):
+    class Meta:
+        model = Outcome
+        fields = ['foi_outcomes', 'foi_exemptions', 'foi_conditional_exemptions', 'disclosure_outcomes', 'certificates']
 
 class InternalReviewForm(forms.ModelForm):
     class Meta:

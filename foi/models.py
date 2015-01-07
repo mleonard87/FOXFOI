@@ -14,6 +14,12 @@ class CommentManager(models.Manager):
         comment.save()
         return comment
 
+class OutcomeManager(models.Manager):
+    def create_outcome(self, case):
+        outcome = self.create(case = case)
+        outcome.save()
+        return outcome
+
 class InternalReviewManager(models.Manager):
     def create_internal_review(self, case):
         ir = self.create(case = case)
@@ -71,6 +77,69 @@ class Comment(models.Model):
         return self.subject
 
     objects = CommentManager()
+
+class Outcome(models.Model):
+
+    FOI_OUTCOMES = (
+        ('FULL_ACCESS', '1) Grant access in full'),
+        ('PARTIAL_EXEMPTION', '2) Withhold some documents as exempt'),
+        ('FULL_EXEMPTION', '3) Withhold all documents as exempt'),
+        ('DEFER', '4) Defer access'),
+        ('REDACTION', '5) Grant access with redactions'),
+        ('DNE', '6) Documents do not exist or cannot be found'),
+        ('NCND', '7) Neither confirm nor deny')
+    )
+
+    FOI_EXEMPTIONS = (
+        ('CSR', 'Commonwealth-State Relations'),
+        ('DPRAMF', 'Deliberative Processes Relating to Agencies'' or Ministers'' Functions'),
+        ('FPIC', 'Financial and Property Interests of the Commonwealth'),
+        ('OAM', 'Operations of Agencies Management'),
+        ('PP', 'Personal Privacy'),
+        ('BA', 'Business Affairs'),
+        ('RCANU', 'Research by CSIRO or the Australian National University'),
+        ('AE', 'Australia''s Economy')
+    )
+
+    FOI_CONDITIONAL_EXEMPTIONS = (
+        ('CSR', 'Commonwealth-State Relations'),
+        ('DPRAMF', 'Deliberative Processes Relating to Agencies'' or Ministers'' Functions'),
+        ('FPIC', 'Financial and Property Interests of the Commonwealth'),
+        ('OAM', 'Operations of Agencies Management'),
+        ('PP', 'Personal Privacy'),
+        ('BA', 'Business Affairs'),
+        ('RCANU', 'Research by CSIRO or the Australian National University'),
+        ('AE', 'Australia''s Economy')
+    )
+
+    DISCLOSURE_OUTCOMES = (
+        ('GRANTED_IN_FULL', 'Granted In Full'),
+        ('WITHHELD_IN_PART', 'Withheld In Part'),
+        ('WITHHELD_IN_FULL', 'Withheld In Full')
+    )
+
+    CERTIFICATES = (
+        ('National Security', 'National Security'),
+        ('Defence', 'Defence'),
+        ('International Relations', 'International Relations'),
+        ('Relations with States', 'Relations with States'),
+        ('Cabinet Documents', 'Cabinet Documents'),
+        ('Executive Council Documents', 'Executive Council Documents'),
+        ('Internal Working Documents', 'Internal Working Documents')
+    )
+
+
+    case = models.ForeignKey(Case)
+    foi_outcomes = models.CharField(max_length = 100, choices = FOI_OUTCOMES)
+    foi_exemptions = models.CharField(max_length = 100, choices = FOI_EXEMPTIONS)
+    foi_conditional_exemptions = models.CharField(max_length = 100, choices = FOI_CONDITIONAL_EXEMPTIONS)
+    disclosure_outcomes = models.CharField(max_length = 100, choices = DISCLOSURE_OUTCOMES)
+    certificates = models.CharField(max_length = 100, choices = CERTIFICATES)
+
+    def __unicode__(self):
+        return self.case.name
+
+    objects = OutcomeManager()
 
 class InternalReview(models.Model):
     case = models.ForeignKey(Case)
