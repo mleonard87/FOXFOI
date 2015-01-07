@@ -130,11 +130,11 @@ class Outcome(models.Model):
 
 
     case = models.ForeignKey(Case)
-    foi_outcomes = models.CharField(max_length = 100, choices = FOI_OUTCOMES)
-    foi_exemptions = models.CharField(max_length = 100, choices = FOI_EXEMPTIONS)
-    foi_conditional_exemptions = models.CharField(max_length = 100, choices = FOI_CONDITIONAL_EXEMPTIONS)
-    disclosure_outcomes = models.CharField(max_length = 100, choices = DISCLOSURE_OUTCOMES)
-    certificates = models.CharField(max_length = 100, choices = CERTIFICATES)
+    foi_outcomes = models.CharField(max_length = 100, choices = FOI_OUTCOMES, blank = True)
+    foi_exemptions = models.CharField(max_length = 100, choices = FOI_EXEMPTIONS, blank = True)
+    foi_conditional_exemptions = models.CharField(max_length = 100, choices = FOI_CONDITIONAL_EXEMPTIONS, blank = True)
+    disclosure_outcomes = models.CharField(max_length = 100, choices = DISCLOSURE_OUTCOMES, blank = True)
+    certificates = models.CharField(max_length = 100, choices = CERTIFICATES, blank = True)
 
     def __unicode__(self):
         return self.case.name
@@ -160,7 +160,7 @@ class InformationCommissionerAppeal(models.Model):
     documents_provided_date = models.DateField(blank = True, null = True)
     decision_recieved_date = models.DateField(blank = True, null = True)
     decision = models.TextField(blank = True, null = True)
-    decision_notice = models.CharField(max_length = 100)
+    decision_notice = models.CharField(max_length = 100, blank = True)
 
     def __unicode__(self):
         return self.case.name
@@ -173,7 +173,7 @@ class AdministrativeAppealsTribunal(models.Model):
     documents_provided_date = models.DateField(blank = True, null = True)
     decision_recieved_date = models.DateField(blank = True, null = True)
     decision = models.TextField(blank = True, null = True)
-    decision_notice = models.CharField(max_length = 100)
+    decision_notice = models.CharField(max_length = 100, blank = True)
 
     def __unicode__(self):
         return self.case.name
