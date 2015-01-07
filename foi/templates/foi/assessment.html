@@ -1,0 +1,53 @@
+{% extends "foi/case_base.html" %}
+
+{% block activepage %}case_assessment{% endblock %}
+
+{% block case_content %}
+    <div class="row">
+        <div class="large-12 columns">
+            <form action="" method="post">
+                <h3>Case Assessment</h3>
+                {% for field in assessment_form %}
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label class="{% if field.errors %}error{% endif %}">{{ field.label_tag }}
+                            {{ field }}
+                            </label>
+                            {% if field.errors %}
+                                <small class="error">{{ field.errors }}</small>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                <h3>Fees</h3>
+                {% for field in assessment_fee_form %}
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label class="{% if field.errors %}error{% endif %}">{{ field.label_tag }}
+                            {{ field }}
+                            </label>
+                            {% if field.errors %}
+                                <small class="error">{{ field.errors }}</small>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                <h3>Third Party Consultation</h3>
+                {% for field in assessment_third_party_form %}
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label class="{% if field.errors %}error{% endif %}">{{ field.label_tag }}
+                            {{ field }}
+                            </label>
+                            {% if field.errors %}
+                                <small class="error">{{ field.errors }}</small>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% csrf_token %}
+                <input type="submit" value="Save" class="button">
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -5,8 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from foxfoi.ajax import *
 
-from foi.models import Case, Comment, Outcome, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
-from foi.forms import CaseForm, CommentForm, OutcomeForm, InternalReviewForm, InformationCommissionerAppealForm, AdministrativeAppealsTribunalForm
+from foi.models import Case, Comment, Assessment, Outcome, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
+from foi.forms import CaseForm, CommentForm, AssessmentForm, AssessmentFeeForm, AssessmentThirdPartyForm, OutcomeForm, InternalReviewForm, InformationCommissionerAppealForm, AdministrativeAppealsTribunalForm
 
 @login_required
 def index_case(request):
@@ -82,6 +82,29 @@ def delete_comment(request, case_id, comment_id):
         return HttpResponseRedirect(reverse('foi:case_comments', args = (case_id,)))
     else:
         return render(request, 'foi/delete_comment.html', {'case': case, 'comment': comment})
+
+@login_required
+def case_assessment(request, case_id):
+    case = get_object_or_404(Case, pk = case_id)
+    if request.method == 'POST':
+        assessment = get_object_or_404(Assessment, case = case_id)
+        assessment_form = AssessmentForm(request.POST, instance = assessment)
+        assessment_fee_form = AssessmentFeeForm(request.POST, instance = assessment)
+        assessment_third_party_form = AssessmentThirdPartyForm(request.POST, instance = assessment)
+        if assessment_form.is_valid() and assessment_fee_form.is_valid() and assessment_third_party_form.is_valid():
+            assessment_form.save()
+            assessment_fee_form.save()
+            assessment_third_party_form.save()
+            return HttpResponseRedirect(reverse('foi:case_assessment', args = (case_id,)))
+    else:
+        try:
+            assessment = Assessment.objects.get(case = case_id)
+        except ObjectDoesNotExist:
+            assessment = Assessment.objects.create_assessment(case)
+        assessment_form = AssessmentForm(instance = assessment)
+        assessment_fee_form = AssessmentFeeForm(instance = assessment)
+        assessment_third_party_form = AssessmentThirdPartyForm(instance = assessment)
+    return render(request, 'foi/assessment.html', {'case': case, 'assessment_form': assessment_form, 'assessment_fee_form': assessment_fee_form, 'assessment_third_party_form': assessment_third_party_form})
 
 @login_required
 def case_outcome(request, case_id):

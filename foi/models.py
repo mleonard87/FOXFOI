@@ -14,6 +14,12 @@ class CommentManager(models.Manager):
         comment.save()
         return comment
 
+class AssessmentManager(models.Manager):
+    def create_assessment(self, case):
+        assessment = self.create(case = case)
+        assessment.save()
+        return assessment
+
 class OutcomeManager(models.Manager):
     def create_outcome(self, case):
         outcome = self.create(case = case)
@@ -62,7 +68,7 @@ class Case(models.Model):
     created_by = models.ForeignKey(User)
 
     def __unicode__(self):
-        return self.name
+        return self.title
 
     objects = CaseManager()
 
@@ -77,6 +83,73 @@ class Comment(models.Model):
         return self.subject
 
     objects = CommentManager()
+
+class Assessment(models.Model):
+
+    THIRD_PARTY_CONSULTATION_REASON = (
+        ('PERSON_BUSINESS', 'a person''s business or professional affairs'),
+        ('ORGANISATION_BUSINESS', 'an organisation''s business or professional affairs'),
+        ('PERSON_PERSONAL', 'an individual''s personal information'),
+        ('GOVERNMENT', 'material originating or received from a State or Territory government'),
+        ('FOREIGN', 'material originating or received from a foreign entity')
+    )
+
+    DOCUMENTS_ATTACHED_OR_DESCRIBED = (
+        ('ATTACHED', 'Attached'),
+        ('DESCRIBED', 'Described')
+    )
+
+    case = models.ForeignKey(Case)
+    third_party_consultation = models.BooleanField(default = False)
+    precedents = models.BooleanField(default = False)
+    precedent_details = models.TextField(blank = True, null = True)
+
+    # fee details
+    fee_flag = models.BooleanField(default = False)
+    search_and_retrieval_time = models.DecimalField(max_digits = 10, decimal_places = 2, blank = True, null = True)
+    decision_making_time = models.DecimalField(max_digits = 10, decimal_places = 2, blank = True, null = True)
+    photocopy_charges = models.DecimalField(max_digits = 10, decimal_places = 2, blank = True, null = True)
+    other_access_time = models.DecimalField(max_digits = 10, decimal_places = 2, blank = True, null = True)
+    postage_charges = models.DecimalField(max_digits = 10, decimal_places = 2, blank = True, null = True)
+    initial_deposit = models.DecimalField(max_digits = 10, decimal_places = 2, blank = True, null = True)
+    request_general_description = models.CharField(max_length = 100, blank = True, null = True)
+    include_refine_request_flag = models.BooleanField(default = False)
+    include_third_party_consultation_flag = models.BooleanField(default = False)
+    request_concerning = models.CharField(max_length = 100, choices = THIRD_PARTY_CONSULTATION_REASON, blank = True)
+    contact_name = models.CharField(max_length = 100, blank = True)
+    contact_telephone = models.CharField(max_length = 30, blank = True)
+
+    # fee metadata
+    fee_notice_issued_flag = models.BooleanField(default = False)
+    fee_notice_issued_date = models.DateField(blank = True, null = True)
+    fee_payment_required_date = models.DateField(blank = True, null = True)
+    fee_paid_flag = models.BooleanField(default = False)
+    fee_received_date = models.DateField(blank = True, null = True)
+    fee_limit_flag = models.BooleanField(default = False)
+
+    # third party consultation data
+    request_general_description = models.CharField(max_length = 100, blank = True)
+    documents_attached_or_described = models.CharField(max_length = 100, choices = DOCUMENTS_ATTACHED_OR_DESCRIBED, blank = True)
+    include_s47_flag = models.BooleanField(default = False)
+    include_s47b_flag = models.BooleanField(default = False)
+    include_s47f_flag = models.BooleanField(default = False)
+    include_s47g_flag = models.BooleanField(default = False)
+    respond_by_date = models.DateField(blank = True, null = True)
+    contact_name = models.CharField(max_length = 100, blank = True)
+    contact_telephone = models.CharField(max_length = 30, blank = True)
+
+    # third party details
+    third_party_title = models.CharField(max_length = 20, blank = True)
+    third_party_name = models.CharField(max_length = 100, blank = True)
+    third_party_department = models.CharField(max_length = 100, blank = True)
+    third_party_organisation = models.CharField(max_length = 100, blank = True)
+    third_party_address = models.CharField(max_length = 400, blank = True)
+    third_party_postcode = models.CharField(max_length = 10, blank = True)
+
+    def __unicode__(self):
+        return self.case.title
+
+    objects = AssessmentManager()
 
 class Outcome(models.Model):
 
@@ -137,7 +210,7 @@ class Outcome(models.Model):
     certificates = models.CharField(max_length = 100, choices = CERTIFICATES, blank = True)
 
     def __unicode__(self):
-        return self.case.name
+        return self.case.title
 
     objects = OutcomeManager()
 
@@ -150,7 +223,7 @@ class InternalReview(models.Model):
     review_decision = models.TextField(blank = True, null = True)
 
     def __unicode__(self):
-        return self.case.name
+        return self.case.title
 
     objects = InternalReviewManager()
 
@@ -163,7 +236,7 @@ class InformationCommissionerAppeal(models.Model):
     decision_notice = models.CharField(max_length = 100, blank = True)
 
     def __unicode__(self):
-        return self.case.name
+        return self.case.title
 
     objects = InformationCommissionerAppealManager()
 
@@ -176,6 +249,6 @@ class AdministrativeAppealsTribunal(models.Model):
     decision_notice = models.CharField(max_length = 100, blank = True)
 
     def __unicode__(self):
-        return self.case.name
+        return self.case.title
 
     objects = AdministrativeAppealsTribunalManager()

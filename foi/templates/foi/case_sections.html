@@ -1,6 +1,7 @@
 <dl id="case-sub-nav" class="sub-nav">
   <dd name="case_index" class="active"><a href="{% url 'foi:edit_case' case.id %}">Case Details</a></dd>
   <dd name="case_comments"><a href="{% url 'foi:case_comments' case.id %}">Comments</a></dd>
+  <dd name="case_assessment"><a href="{% url 'foi:case_assessment' case.id %}">Assessment</a></dd>
   <dd name="case_outcome"><a href="{% url 'foi:case_outcome' case.id %}">Outcome</a></dd>
   <dd name="case_ir"><a href="{% url 'foi:case_internal_review' case.id %}">Internal Review</a></dd>
   <dd name="case_ica"><a href="{% url 'foi:case_ica' case.id %}">Information Commissioner Appeal</a></dd>

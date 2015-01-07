@@ -1,6 +1,6 @@
 from django import forms
 from django.utils import timezone
-from foi.models import Case, Comment, Outcome, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
+from foi.models import Case, Comment, Assessment, Outcome, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
 
 class CaseForm(forms.ModelForm):
     class Meta:
@@ -22,8 +22,8 @@ class CaseForm(forms.ModelForm):
         }
         widgets = {
             'title': forms.TextInput(attrs = {'placeholder': 'Enter a title for this case'}),
-            'received_date': forms.DateInput(attrs = {'type': 'date', 'value': timezone.now().date()}),
-            'enquiry_date': forms.DateInput(attrs = {'type': 'date', 'value': timezone.now().date()}),
+            'received_date': forms.DateInput(attrs = {'type': 'date'}),
+            'enquiry_date': forms.DateInput(attrs = {'type': 'date'}),
             'urgent_flag': forms.CheckboxInput(attrs = {'label': 'Urgent?'})
         }
 
@@ -36,6 +36,89 @@ class CommentForm(forms.ModelForm):
             'body': forms.Textarea(attrs = {'placeholder': 'Enter a body for this comment'})
         }
 
+class AssessmentForm(forms.ModelForm):
+    class Meta:
+        model = Assessment
+        fields = [
+            'third_party_consultation',
+            'precedents',
+            'precedent_details']
+        labels = {
+            'third_party_consultation': ('Third Party Consultation Required?'),
+            'precedents': ('Precedents Exist?')
+        }
+        widgets = {}
+        help_texts = {}
+
+class AssessmentFeeForm(forms.ModelForm):
+    class Meta:
+        model = Assessment
+        fields = [
+            'fee_flag',
+            'search_and_retrieval_time',
+            'decision_making_time',
+            'photocopy_charges',
+            'other_access_time',
+            'postage_charges',
+            'initial_deposit',
+            'request_general_description',
+            'include_refine_request_flag',
+            'include_third_party_consultation_flag',
+            'request_concerning',
+            'contact_name',
+            'contact_telephone',
+
+            'fee_notice_issued_flag',
+            'fee_notice_issued_date',
+            'fee_payment_required_date',
+            'fee_paid_flag',
+            'fee_received_date',
+            'fee_limit_flag']
+        labels = {
+            'fee_flag': ('Fees Applicable?'),
+            'include_refine_request_flag': ('Include Refine Request Clause?'),
+            'include_third_party_consultation_flag': ('Include Third Party Consultation Clause?'),
+            'fee_notice_issued_flag': ('Fee Notice Issued?'),
+            'fee_paid_flag': ('Fee Paid?'),
+            'fee_limit_flag': ('Fee Exceeds Cost Limit?')
+        }
+        widgets = {
+            'fee_notice_issued_date': forms.DateInput(attrs = {'type': 'date'}),
+            'fee_payment_required_date': forms.DateInput(attrs = {'type': 'date'}),
+            'fee_received_date': forms.DateInput(attrs = {'type': 'date'})
+        }
+
+class AssessmentThirdPartyForm(forms.ModelForm):
+    class Meta:
+        model = Assessment
+        fields = [
+            'request_general_description',
+            'documents_attached_or_described',
+            'include_s47_flag',
+            'include_s47b_flag',
+            'include_s47f_flag',
+            'include_s47g_flag',
+            'respond_by_date',
+            'contact_name',
+            'contact_telephone',
+
+            'third_party_title',
+            'third_party_name',
+            'third_party_department',
+            'third_party_organisation',
+            'third_party_address',
+            'third_party_postcode']
+        labels = {
+            'include_s47_flag': ('Include s47?'),
+            'include_s47b_flag': ('Include s47B?'),
+            'include_s47f_flag': ('Include s47F?'),
+            'include_s47g_flag': ('Include s47G?')
+        }
+        widgets = {
+            'respond_by_date': forms.DateInput(attrs = {'type': 'date'})
+        }
+        help_texts = {}
+
 class OutcomeForm(forms.ModelForm):
     class Meta:
         model = Outcome
@@ -46,8 +129,8 @@ class InternalReviewForm(forms.ModelForm):
         model = InternalReview
         fields = ['requested_date', 'review_held_date', 'days_taken_to_hold_review', 'review_members', 'review_decision']
         widgets = {
-            'requested_date': forms.DateInput(attrs = {'type': 'date', 'value': timezone.now().date()}),
-            'review_held_date': forms.DateInput(attrs = {'type': 'date', 'value': timezone.now().date()})
+            'requested_date': forms.DateInput(attrs = {'type': 'date'}),
+            'review_held_date': forms.DateInput(attrs = {'type': 'date'})
         }
 
 class InformationCommissionerAppealForm(forms.ModelForm):
@@ -55,9 +138,9 @@ class InformationCommissionerAppealForm(forms.ModelForm):
         model = InformationCommissionerAppeal
         fields = ['contacted_date', 'documents_provided_date', 'decision_recieved_date', 'decision', 'decision_notice']
         widgets = {
-            'contacted_date': forms.DateInput(attrs = {'type': 'date', 'value': timezone.now().date()}),
-            'documents_provided_date': forms.DateInput(attrs = {'type': 'date', 'value': timezone.now().date()}),
-            'decision_recieved_date': forms.DateInput(attrs = {'type': 'date', 'value': timezone.now().date()})
+            'contacted_date': forms.DateInput(attrs = {'type': 'date'}),
+            'documents_provided_date': forms.DateInput(attrs = {'type': 'date'}),
+            'decision_recieved_date': forms.DateInput(attrs = {'type': 'date'})
         }
 
 class AdministrativeAppealsTribunalForm(forms.ModelForm):
@@ -65,7 +148,7 @@ class AdministrativeAppealsTribunalForm(forms.ModelForm):
         model = AdministrativeAppealsTribunal
         fields = ['contacted_date', 'documents_provided_date', 'decision_recieved_date', 'decision', 'decision_notice']
         widgets = {
-            'contacted_date': forms.DateInput(attrs = {'type': 'date', 'value': timezone.now().date()}),
-            'documents_provided_date': forms.DateInput(attrs = {'type': 'date', 'value': timezone.now().date()}),
-            'decision_recieved_date': forms.DateInput(attrs = {'type': 'date', 'value': timezone.now().date()})
+            'contacted_date': forms.DateInput(attrs = {'type': 'date'}),
+            'documents_provided_date': forms.DateInput(attrs = {'type': 'date'}),
+            'decision_recieved_date': forms.DateInput(attrs = {'type': 'date'})
         }
