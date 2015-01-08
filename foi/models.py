@@ -230,23 +230,37 @@ class Assessment(models.Model):
     def __unicode__(self):
         return self.case.title
 
+    def search_and_retrieval_time_display(self):
+        sr_time = self.search_and_retrieval_time if self.search_and_retrieval_time != None else 0
+        return sr_time
+
     def search_and_retrieval_charges(self):
-        return self.search_and_retrieval_time * 15
+        sr_time = self.search_and_retrieval_time if self.search_and_retrieval_time != None else 0
+        return sr_time * 15
 
     def decision_making_time_free(self):
-        return 5 if self.decision_making_time >= 5 else self.decision_making_time
+        dm_time = self.decision_making_time if self.decision_making_time != None else 0
+        return 5 if dm_time >= 5 else dm_time
 
     def decision_making_time_expensed(self):
-        return 0 if self.decision_making_time <= 5 else self.decision_making_time - 5
+        dm_time = self.decision_making_time if self.decision_making_time != None else 0
+        return 0 if dm_time <= 5 else dm_time - 5
 
     def decision_making_charges(self):
         return self.decision_making_time_expensed() * 20
 
+    def other_access_time_display(self):
+        oa_time = self.other_access_time if self.other_access_time != None else 0
+        return oa_time
+
     def other_access_charges(self):
-        return self.other_access_time * 30
+        oa_time = self.other_access_time if self.other_access_time != None else 0
+        return oa_time * 30
 
     def total_charges(self):
-        return self.search_and_retrieval_charges() + self.decision_making_charges() + self.photocopy_charges + self.other_access_charges() + self.postage_charges
+        photo_charges = self.photocopy_charges if self.photocopy_charges != None else 0
+        post_charges = self.postage_charges if self.postage_charges != None else 0
+        return self.search_and_retrieval_charges() + self.decision_making_charges() + photo_charges + self.other_access_charges() + post_charges
 
     objects = AssessmentManager()
 

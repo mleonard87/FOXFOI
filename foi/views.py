@@ -182,7 +182,7 @@ def case_aat(request, case_id):
 @login_required
 def preview_fee_doc(response, case_id):
     case = get_object_or_404(Case, pk = case_id)
-    assessment = get_object_or_404(Assessment, pk = case_id)
+    assessment = get_object_or_404(Assessment, case = case_id)
     resp = HttpResponse(content_type = 'application/pdf')
     result = generate_pdf('docgen/fee_document.html', file_object = resp, context = {'case': case, 'assessment': assessment})
     return result
@@ -190,13 +190,13 @@ def preview_fee_doc(response, case_id):
 @login_required
 def download_fee_doc(response, case_id):
     case = get_object_or_404(Case, pk = case_id)
-    assessment = get_object_or_404(Assessment, pk = case_id)
+    assessment = get_object_or_404(Assessment, case = case_id)
     return render_to_pdf_response('docgen/fee_document.html', context = {'case': case, 'assessment': assessment}, pdfname = case.title + ' fee_document.pdf')
 
 @login_required
 def preview_notice_of_consultation_applicant(response, case_id):
     case = get_object_or_404(Case, pk = case_id)
-    assessment = get_object_or_404(Assessment, pk = case_id)
+    assessment = get_object_or_404(Assessment, case = case_id)
     resp = HttpResponse(content_type = 'application/pdf')
     result = generate_pdf('docgen/notice_of_consultation_applicant.html', file_object = resp, context = {'case': case, 'assessment': assessment})
     return result
@@ -204,13 +204,13 @@ def preview_notice_of_consultation_applicant(response, case_id):
 @login_required
 def download_notice_of_consultation_applicant(response, case_id):
     case = get_object_or_404(Case, pk = case_id)
-    assessment = get_object_or_404(Assessment, pk = case_id)
+    assessment = get_object_or_404(Assessment, case = case_id)
     return render_to_pdf_response('docgen/notice_of_consultation_applicant.html', context = {'case': case, 'assessment': assessment}, pdfname = case.title + ' notice_of_consultation_applicant.pdf')
 
 @login_required
 def preview_notice_of_consultation_third_party(response, case_id):
     case = get_object_or_404(Case, pk = case_id)
-    assessment = get_object_or_404(Assessment, pk = case_id)
+    assessment = get_object_or_404(Assessment, case = case_id)
     resp = HttpResponse(content_type = 'application/pdf')
     result = generate_pdf('docgen/notice_of_consultation_third_party.html', file_object = resp, context = {'case': case, 'assessment': assessment})
     return result
@@ -218,5 +218,5 @@ def preview_notice_of_consultation_third_party(response, case_id):
 @login_required
 def download_notice_of_consultation_third_party(response, case_id):
     case = get_object_or_404(Case, pk = case_id)
-    assessment = get_object_or_404(Assessment, pk = case_id)
+    assessment = get_object_or_404(Assessment, case = case_id)
     return render_to_pdf_response('docgen/notice_of_consultation_third_party.html', context = {'case': case, 'assessment': assessment}, pdfname = case.title + ' notice_of_consultation_third_party.pdf')
