@@ -112,7 +112,7 @@ class Assessment(models.Model):
     other_access_time = models.DecimalField(max_digits = 10, decimal_places = 2, blank = True, null = True)
     postage_charges = models.DecimalField(max_digits = 10, decimal_places = 2, blank = True, null = True)
     initial_deposit = models.DecimalField(max_digits = 10, decimal_places = 2, blank = True, null = True)
-    request_general_description = models.CharField(max_length = 100, blank = True, null = True)
+    request_general_description = models.CharField(max_length = 100, blank = True)
     include_refine_request_flag = models.BooleanField(default = False)
     include_third_party_consultation_flag = models.BooleanField(default = False)
     request_concerning = models.CharField(max_length = 100, choices = THIRD_PARTY_CONSULTATION_REASON, blank = True)
@@ -128,15 +128,15 @@ class Assessment(models.Model):
     fee_limit_flag = models.BooleanField(default = False)
 
     # third party consultation data
-    request_general_description = models.CharField(max_length = 100, blank = True)
+    third_party_request_general_description = models.CharField(max_length = 100, blank = True, default = "")
     documents_attached_or_described = models.CharField(max_length = 100, choices = DOCUMENTS_ATTACHED_OR_DESCRIBED, blank = True)
     include_s47_flag = models.BooleanField(default = False)
     include_s47b_flag = models.BooleanField(default = False)
     include_s47f_flag = models.BooleanField(default = False)
     include_s47g_flag = models.BooleanField(default = False)
     respond_by_date = models.DateField(blank = True, null = True)
-    contact_name = models.CharField(max_length = 100, blank = True)
-    contact_telephone = models.CharField(max_length = 30, blank = True)
+    third_party_contact_name = models.CharField(max_length = 100, blank = True, default = "")
+    third_party_contact_telephone = models.CharField(max_length = 30, blank = True, default = "")
 
     # third party details
     third_party_title = models.CharField(max_length = 20, blank = True)

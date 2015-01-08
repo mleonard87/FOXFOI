@@ -1,5 +1,4 @@
 from django import forms
-from django.utils import timezone
 from foi.models import Case, Comment, Assessment, Outcome, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
 
 class CaseForm(forms.ModelForm):
@@ -92,15 +91,15 @@ class AssessmentThirdPartyForm(forms.ModelForm):
     class Meta:
         model = Assessment
         fields = [
-            'request_general_description',
+            'third_party_request_general_description',
             'documents_attached_or_described',
             'include_s47_flag',
             'include_s47b_flag',
             'include_s47f_flag',
             'include_s47g_flag',
             'respond_by_date',
-            'contact_name',
-            'contact_telephone',
+            'third_party_contact_name',
+            'third_party_contact_telephone',
 
             'third_party_title',
             'third_party_name',

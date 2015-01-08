@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from foxfoi.ajax import *
 
+from django_xhtml2pdf.utils import generate_pdf
+
 from foi.models import Case, Comment, Assessment, Outcome, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
 from foi.forms import CaseForm, CommentForm, AssessmentForm, AssessmentFeeForm, AssessmentThirdPartyForm, OutcomeForm, InternalReviewForm, InformationCommissionerAppealForm, AdministrativeAppealsTribunalForm
 
@@ -173,3 +175,27 @@ def case_aat(request, case_id):
             aat = AdministrativeAppealsTribunal.objects.create_administrative_appeals_tribunal(case)
         form = AdministrativeAppealsTribunalForm(instance = aat)
     return render(request, 'foi/aat.html', {'case': case, 'form': form})
+
+@login_required
+def generate_fee_doc(response, case_id):
+    case = get_object_or_404(Case, pk = case_id)
+    assessment = get_object_or_404(Assessment, pk = case_id)
+    resp = HttpResponse(content_type = 'application/pdf')
+    result = generate_pdf('docgen/fee_document.html', file_object = resp, context = {'case': case, 'assessment': assessment})
+    return result
+
+@login_required
+def generate_notice_of_consultation_applicant(response, case_id):
+    case = get_object_or_404(Case, pk = case_id)
+    assessment = get_object_or_404(Assessment, pk = case_id)
+    resp = HttpResponse(content_type = 'application/pdf')
+    result = generate_pdf('docgen/notice_of_consultation_applicant.html', file_object = resp, context = {'case': case, 'assessment': assessment})
+    return result
+
+@login_required
+def generate_notice_of_consultation_third_party(response, case_id):
+    case = get_object_or_404(Case, pk = case_id)
+    assessment = get_object_or_404(Assessment, pk = case_id)
+    resp = HttpResponse(content_type = 'application/pdf')
+    result = generate_pdf('docgen/notice_of_consultation_third_party.html', file_object = resp, context = {'case': case, 'assessment': assessment})
+    return result
