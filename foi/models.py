@@ -53,6 +53,73 @@ class Case(models.Model):
         ('FAX', 'Fax')
     )
 
+    ENQUIRER_GROUP = (
+        ('A', 'Academia'),
+        ('B', 'Businesses'),
+        ('C', 'Charities/Lobby Groups'),
+        ('E', 'Employees'),
+        ('M', 'Media'),
+        ('MP', 'MPs'),
+        ('P', 'Public'),
+        ('O', 'Other Govt body/Local Authority/etc.')
+    )
+    
+    INDUSTRY_BODY = (
+        ('NR', 'Transport - Roads'),
+        ('FSR', 'Transport - Rail'),
+        ('TPE', 'Transport - Air'),
+        ('GEXP', 'Utilities - Gas'),
+        ('GC', 'Utilities - Electricity'),
+        ('HE', 'Utilities - Water'),
+        ('HT', 'Chemicals - Household'),
+        ('IL', 'Chemicals - Industrial'),
+        ('LM', 'Financial - Banking'),
+        ('LU', 'Financial - Insurance'),
+        ('MR', 'Financial - Investments'),
+        ('XC', 'Catering'),
+        ('NR', 'Hospitality'),
+        ('NXEA', 'Communications - IT'),
+        ('NXEC', 'Communications - Mobile'),
+        ('SE', 'Communications - Landlines/Cable'),
+        ('SR', 'Energy - Wind'),
+        ('SWT', 'Energy - Water'),
+        ('SEXP', 'Energy - Nuclear'),
+        ('WSMR', 'Energy - Oil and Gas'),
+        ('VT', 'Media - Satellite'),
+        ('DLR', 'Media - Press'),
+        ('ATW', 'Media - TV and Radio'),
+        ('TFL', 'TFL - Bus'),
+        ('SPTE', 'TFL - Underground'),
+        ('TW', 'Agriculture - Industrial'),
+        ('TRAM', 'Agriculture - Farming'),
+        ('HR', 'Government - Environment'),
+        ('ATOC', 'Government - Educational'),
+        ('DFT', 'Government - Transport'),
+        ('ORR', 'Government - Financial'),
+        ('ROSCO', 'Government - Social'),
+        ('TL', 'Retail - Department Stores'),
+        ('C2C', 'Retail - Independent'),
+        ('OTHER', 'Retail - Food'),
+        ('SOME_', 'Other'),
+        ('CR', 'EU'),
+        ('EMT', 'Far East'),
+        ('ES', 'US'),
+        ('FCC', 'African'),
+        ('FGW', 'Southern Hemisphere')
+    )
+
+    REGION = (
+        ('LO', 'London'),
+        ('MI', 'Midlands'),
+        ('NE', 'North East'),
+        ('NW', 'North West'),
+        ('SC', 'Scotland'),
+        ('SO', 'South'),
+        ('SE', 'South East'),
+        ('SW', 'South West'),
+        ('WA', 'Wales')
+    )
+
     title = models.CharField(max_length = 100)
     subject = models.CharField(max_length = 250, blank = True, default = "")
     received_date = models.DateField(blank = True, null = True)
@@ -64,6 +131,20 @@ class Case(models.Model):
     urgent_flag = models.BooleanField(default = False)
     handling_instructions = models.CharField(max_length = 200, blank = True, default = "")
     addressee_name = models.CharField(max_length = 100, blank = True, default = "")
+
+    # enquirer details
+    enquirer_title = models.CharField(max_length = 20, blank = True, default = "")
+    enquirer_name = models.CharField(max_length = 100, blank = True, default = "")
+    enquirer_department = models.CharField(max_length = 100, blank = True, default = "")
+    enquirer_organisation = models.CharField(max_length = 100, blank = True, default = "")
+    enquirer_address = models.CharField(max_length = 400, blank = True, default = "")
+    enquirer_postcode = models.CharField(max_length = 10, blank = True, default = "")
+    enquirer_telephone = models.CharField(max_length = 30, blank = True, default = "")
+    enquirer_email_address = models.CharField(max_length = 100, blank = True, default = "")
+    enquirer_enquirer_group = models.CharField(max_length = 10, choices = ENQUIRER_GROUP, blank = True, default = "")
+    enquirer_industry_body = models.CharField(max_length = 10, choices = INDUSTRY_BODY, blank = True, default = "")
+    enquirer_region = models.CharField(max_length = 10, choices = REGION, blank = True, default = "")
+
     created_date = models.DateTimeField()
     created_by = models.ForeignKey(User)
 

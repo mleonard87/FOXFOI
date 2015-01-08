@@ -4,7 +4,21 @@
 
 {% block case_content %}
     <form action="" method="post">
-        {% for field in form %}
+        <h3>Case Details</h3>
+        {% for field in case_form %}
+            <div class="row">
+                <div class="large-12 columns">
+                    <label class="{% if field.errors %}error{% endif %}">{{ field.label_tag }}
+                    {{ field }}
+                    </label>
+                    {% if field.errors %}
+                        <small class="error">{{ field.errors }}</small>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        <h3>Enquirer Details</h3>
+        {% for field in case_enquirer_form %}
             <div class="row">
                 <div class="large-12 columns">
                     <label class="{% if field.errors %}error{% endif %}">{{ field.label_tag }}

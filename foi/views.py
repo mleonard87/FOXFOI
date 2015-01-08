@@ -8,7 +8,7 @@ from foxfoi.ajax import *
 from django_xhtml2pdf.utils import generate_pdf
 
 from foi.models import Case, Comment, Assessment, Outcome, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
-from foi.forms import CaseForm, CommentForm, AssessmentForm, AssessmentFeeForm, AssessmentThirdPartyForm, OutcomeForm, InternalReviewForm, InformationCommissionerAppealForm, AdministrativeAppealsTribunalForm
+from foi.forms import CaseForm, CaseEnquirerForm, CommentForm, AssessmentForm, AssessmentFeeForm, AssessmentThirdPartyForm, OutcomeForm, InternalReviewForm, InformationCommissionerAppealForm, AdministrativeAppealsTribunalForm
 
 @login_required
 def index_case(request):
@@ -31,13 +31,16 @@ def new_case(request):
 def edit_case(request, case_id):
     case = get_object_or_404(Case, pk = case_id)
     if request.method == 'POST':
-        form = CaseForm(request.POST, instance = case)
-        if form.is_valid():
-            form.save()
+        case_form = CaseForm(request.POST, instance = case)
+        case_enquirer_form = CaseEnquirerForm(request.POST, instance = case)
+        if case_form.is_valid() and case_enquirer_form.is_valid():
+            case_form.save()
+            case_enquirer_form.save()
             return HttpResponseRedirect(reverse('foi:edit_case', args = (case_id,)))
     else:
-        form = CaseForm(instance = case)
-    return render(request, 'foi/edit.html', {'case': case, 'form': form})
+        case_form = CaseForm(instance = case)
+        case_enquirer_form = CaseEnquirerForm(instance = case)
+    return render(request, 'foi/edit.html', {'case': case, 'case_form': case_form, 'case_enquirer_form': case_enquirer_form})
 
 @login_required
 def delete_case(request, case_id):

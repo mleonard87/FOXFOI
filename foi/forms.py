@@ -26,6 +26,35 @@ class CaseForm(forms.ModelForm):
             'urgent_flag': forms.CheckboxInput(attrs = {'label': 'Urgent?'})
         }
 
+class CaseEnquirerForm(forms.ModelForm):
+    class Meta:
+        model = Case
+        fields = [
+            'enquirer_title',
+            'enquirer_name',
+            'enquirer_department',
+            'enquirer_organisation',
+            'enquirer_address',
+            'enquirer_postcode',
+            'enquirer_telephone',
+            'enquirer_email_address',
+            'enquirer_enquirer_group',
+            'enquirer_industry_body',
+            'enquirer_region']
+        labels = {
+            'enquirer_title': ('Title'),
+            'enquirer_name': ('Name'),
+            'enquirer_department': ('Department'),
+            'enquirer_organisation': ('Organisation'),
+            'enquirer_address': ('Address'),
+            'enquirer_postcode': ('Postcode'),
+            'enquirer_telephone': ('Telephone'),
+            'enquirer_email_address': ('Email Address'),
+            'enquirer_enquirer_group': ('Enquirer Group'),
+            'enquirer_industry_body': ('Industry Body'),
+            'enquirer_region': ('Region')
+        }
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
