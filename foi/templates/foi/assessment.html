@@ -48,9 +48,15 @@
                 {% csrf_token %}
                 <input type="submit" value="Save" class="button">
                 <h3>Correspondence Documents</h3>
-                <a href="{% url 'foi:generate_fee_doc' case.id %}" class="button">Preview Fee Document</a> <!-- action-CA_LIB_FEE_DOCUMENTS-preview-fee-document -->
-                <a href="{% url 'foi:generate_notice_of_consultation_applicant' case.id %}" class="button">Preview Notice of Consultation - Applicant</a> <!-- action-CA_LIB_FEE_DOCUMENTS-preview-notice-of-consultation-applicant -->
-                <a href="{% url 'foi:generate_notice_of_consultation_third_party' case.id %}" class="button">Preview Notice of Consultation - Third Party</a> <!-- action-CA_LIB_FEE_DOCUMENTS-preview-notice-of-consultation-third-party -->
+                <h4>Fee Document</h4>
+                <a href="{% url 'foi:preview_fee_doc' case.id %}" class="button">Preview</a>
+                <a href="{% url 'foi:download_fee_doc' case.id %}" class="button">Download</a>
+                <h4>Notice of Consultation - Applicant</h4>
+                <a href="{% url 'foi:preview_notice_of_consultation_applicant' case.id %}" class="button">Preview</a>
+                <a href="{% url 'foi:download_notice_of_consultation_applicant' case.id %}" class="button">Download</a>
+                <h4>Notice of Consultation - Third Party</h4>
+                <a href="{% url 'foi:preview_notice_of_consultation_third_party' case.id %}" class="button">Preview</a>
+                <a href="{% url 'foi:download_notice_of_consultation_third_party' case.id %}" class="button">Download</a>
             </form>
         </div>
     </div>

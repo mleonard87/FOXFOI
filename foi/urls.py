@@ -16,7 +16,10 @@ urlpatterns = patterns('',
     url(r'^edit/(\d+)/information_commissioner_appeal$', views.case_ica, name = 'case_ica'),
     url(r'^edit/(\d+)/administrative_appeals_tribunal$', views.case_aat, name = 'case_aat'),
     # docgen
-    url(r'^edit/(\d+)/generate_fee_doc$', views.generate_fee_doc, name = 'generate_fee_doc'),
-    url(r'^edit/(\d+)/generate_notice_of_consultation_applicant$', views.generate_notice_of_consultation_applicant, name = 'generate_notice_of_consultation_applicant'),
-    url(r'^edit/(\d+)/generate_notice_of_consultation_third_party$', views.generate_notice_of_consultation_third_party, name = 'generate_notice_of_consultation_third_party'),
+    url(r'^edit/(\d+)/preview_fee_doc$', views.preview_fee_doc, name = 'preview_fee_doc'),
+    url(r'^edit/(\d+)/download_fee_doc$', views.download_fee_doc, name = 'download_fee_doc'),
+    url(r'^edit/(\d+)/preview_notice_of_consultation_applicant$', views.preview_notice_of_consultation_applicant, name = 'preview_notice_of_consultation_applicant'),
+    url(r'^edit/(\d+)/download_notice_of_consultation_applicant$', views.download_notice_of_consultation_applicant, name = 'download_notice_of_consultation_applicant'),
+    url(r'^edit/(\d+)/preview_notice_of_consultation_third_party$', views.preview_notice_of_consultation_third_party, name = 'preview_notice_of_consultation_third_party'),
+    url(r'^edit/(\d+)/download_notice_of_consultation_third_party$', views.download_notice_of_consultation_third_party, name = 'download_notice_of_consultation_third_party'),
 )
