@@ -1,207 +1,207 @@
 <p align="center">
-  <!--fo:external-graphic src="img/DoHA_Logo_Fee_Letter"/-->
+    <!--fo:external-graphic src="img/DoHA_Logo_Fee_Letter"/-->
 </p>
 <p align="left">
-  <font size="10pt">
-{{ case.enquirer_title }}&#160;{{ case.enquirer_name }}
-<br/>
-{{ case.enquirer_organisation }}
-<br/>
-{{ case.enquirer_address }}
-<br/>
-{{ case.enquirer_postcode }}
-  </font>
+    <font size="10pt">
+        {{ case.enquirer_title }}&#160;{{ case.enquirer_name }}
+        <br/>
+        {{ case.enquirer_organisation }}
+        <br/>
+        {{ case.enquirer_address }}
+        <br/>
+        {{ case.enquirer_postcode }}
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-Dear {{ case.enquirer_title }}&#160;{{ case.enquirer_name }}
-  </font>
+    <font size="10pt">
+        Dear {{ case.enquirer_title }}&#160;{{ case.enquirer_name }}
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-<b>Your Freedom of Information Request No: {{ case.title }}</b>
-  </font>
+    <font size="10pt">
+        <b>Your Freedom of Information Request No: {{ case.title }}</b>
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-I refer to your request of {{ case.enquiry_date }} seeking access under the Freedom of Information Act 1982 (the FOI Act) regarding {{ case.enquiry_description }}.
-  </font>
+    <font size="10pt">
+        I refer to your request of {{ case.enquiry_date }} seeking access under the Freedom of Information Act 1982 (the FOI Act) regarding {{ case.enquiry_description }}.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-<i>The Freedom of Information (Fees and Charges) Regulations </i>(the Regulations) prescribes that charges can be levied in respect of a request for access to documents. These charges are set out by the Regulations and are for search and retrieval of documents, decision making and provision of access (for example, copying and postage).
-  </font>
+    <font size="10pt">
+        <i>The Freedom of Information (Fees and Charges) Regulations </i>(the Regulations) prescribes that charges can be levied in respect of a request for access to documents. These charges are set out by the Regulations and are for search and retrieval of documents, decision making and provision of access (for example, copying and postage).
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-I have decided that you are liable to pay a charge in respect of the processing of your request.  I am an authorised decision-maker under section 23 of the FOI Act.
-  </font>
+    <font size="10pt">
+        I have decided that you are liable to pay a charge in respect of the processing of your request.  I am an authorised decision-maker under section 23 of the FOI Act.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-A search and retrieval of documents relevant to your request has been undertaken and a preliminary estimate of charges has been calculated in accordance with the Regulations and is set out in the table below.
-  </font>
+    <font size="10pt">
+        A search and retrieval of documents relevant to your request has been undertaken and a preliminary estimate of charges has been calculated in accordance with the Regulations and is set out in the table below.
+    </font>
 </p>
 <table>
-  <tbody>
-    <tr>
-      <td>
-search and retrieval time (including time spent locating relevant files and collating relevant documents contained on those files)
-      </td>
-      <td>
-{{ assessment.search_and_retrieval_time_display }} hours @ $15.00 per hour
-      </td>
-      <td>
-${{ assessment.search_and_retrieval_charges }}
-      </td>
-    </tr>
-    <tr>
-      <td>
-decision making time (including time spent examining the documents, considering exemptions, undertaking consultation, writing the decision and preparing any documents for release)
-      </td>
-      <td>
-{{ assessment.decision_making_time_free }} hours @ $0.00 per hour
-<br/>
-{{ assessment.decision_making_time_expensed }} hours @ $20.00 per hour
-      </td>
-      <td>
-${{ assessment.decision_making_charges }}
-      </td>
-    </tr>
-    <tr>
-      <td>
-photocopies of documents (if relevant)
-      </td>
-      <td>
-&#160;
-      </td>
-      <td>
-{{ assessment.photocopy_charges }}
-      </td>
-    </tr>
-    <tr>
-      <td>
-other forms of access (if relevant - e.g. preparing transcript or supervising inspection of agency files)
-      </td>
-      <td>
-{{ assessment.other_access_time_display }} hours @ $30.00 per hour
-      </td>
-      <td>
-${{ assessment.other_access_charges }}
-      </td>
-    </tr>
-    <tr>
-      <td>
-Postage charges (if relevant)
-      </td>
-      <td>
-&#160;
-      </td>
-      <td>
-${{ assessment.postage_charges }}
-      </td>
-    </tr>
-  </tbody>
+    <tbody>
+        <tr>
+            <td>
+                search and retrieval time (including time spent locating relevant files and collating relevant documents contained on those files)
+            </td>
+            <td>
+                {{ assessment.search_and_retrieval_time_display }} hours @ $15.00 per hour
+            </td>
+            <td>
+                ${{ assessment.search_and_retrieval_charges }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                decision making time (including time spent examining the documents, considering exemptions, undertaking consultation, writing the decision and preparing any documents for release)
+            </td>
+            <td>
+                {{ assessment.decision_making_time_free }} hours @ $0.00 per hour
+                <br/>
+                {{ assessment.decision_making_time_expensed }} hours @ $20.00 per hour
+            </td>
+            <td>
+                ${{ assessment.decision_making_charges }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                photocopies of documents (if relevant)
+            </td>
+            <td>
+                &#160;
+            </td>
+            <td>
+                {{ assessment.photocopy_charges }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                other forms of access (if relevant - e.g. preparing transcript or supervising inspection of agency files)
+            </td>
+            <td>
+                {{ assessment.other_access_time_display }} hours @ $30.00 per hour
+            </td>
+            <td>
+                ${{ assessment.other_access_charges }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Postage charges (if relevant)
+            </td>
+            <td>
+                &#160;
+            </td>
+            <td>
+                ${{ assessment.postage_charges }}
+            </td>
+        </tr>
+    </tbody>
 </table>
 <table>
-  <tbody>
-    <tr>
-      <td>
-<b>TOTAL</b>       
-      </td>
-      <td>
-&#160;
-      </td>
-      <td>
-${{ assessment.total_charges }}
-      </td>
-    </tr>
-  </tbody>
+    <tbody>
+        <tr>
+            <td>
+                <b>TOTAL</b>       
+            </td>
+            <td>
+                &#160;
+            </td>
+            <td>
+                ${{ assessment.total_charges }}
+            </td>
+        </tr>
+    </tbody>
 </table>
 <p align="left">
-  <font size="10pt">
-The Regulations allow for the first five hours of decision making time to be made available free of charge.  The estimate provided has accounted for that time.
-  </font>
+    <font size="10pt">
+        The Regulations allow for the first five hours of decision making time to be made available free of charge.  The estimate provided has accounted for that time.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-The Regulations prescribe that where a charge is imposed and exceeds $25.00 but is less than $100.00, a deposit of $20.00 may be sought and where the charge exceeds $100.00, a deposit of up to 25% of the estimated charges may be sought.  Based on the preliminary estimate of charges for your request which is ${{ assessment.total_charges }}, I have decided you are {% if assessment.initial_deposit != None %}required to pay a deposit of ${{ assessment.initial_deposit }}{% else %}not required to pay any deposit{% endif %}.
-  </font>
+    <font size="10pt">
+        The Regulations prescribe that where a charge is imposed and exceeds $25.00 but is less than $100.00, a deposit of $20.00 may be sought and where the charge exceeds $100.00, a deposit of up to 25% of the estimated charges may be sought.  Based on the preliminary estimate of charges for your request which is ${{ assessment.total_charges }}, I have decided you are {% if assessment.initial_deposit != None %}required to pay a deposit of ${{ assessment.initial_deposit }}{% else %}not required to pay any deposit{% endif %}.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-Section 29 of the FOI Act provides that you must notify this Department, in writing, within 30 days of receipt of this notice that you either: 
-<br/>
-<ul>
-  <li><font size="10pt">Agree to pay the charge (in which case you should also forward the deposit); or</font></li>
-  <li><font size="10pt">Contend that the charge has been wrongly assessed, or should be reduced or not imposed (including where such charges would cause you financial hardship or where you believe access to documents is in the general public interest).  You should provide full reasons for so contending; or</font></li>
-  <li><font size="10pt">Withdraw your request.</font></li>
-</ul>
-  </font>
+    <font size="10pt">
+        Section 29 of the FOI Act provides that you must notify this Department, in writing, within 30 days of receipt of this notice that you either: 
+        <br/>
+        <ul>
+            <li><font size="10pt">Agree to pay the charge (in which case you should also forward the deposit); or</font></li>
+            <li><font size="10pt">Contend that the charge has been wrongly assessed, or should be reduced or not imposed (including where such charges would cause you financial hardship or where you believe access to documents is in the general public interest).  You should provide full reasons for so contending; or</font></li>
+            <li><font size="10pt">Withdraw your request.</font></li>
+        </ul>
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-If within 30 days of receipt of this notice you have not notified the department in the manner mentioned above, the FOI Act deems that you have withdrawn your request.
-  </font>
+    <font size="10pt">
+        If within 30 days of receipt of this notice you have not notified the department in the manner mentioned above, the FOI Act deems that you have withdrawn your request.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-The time limit for processing your request is suspended, in accordance with section 31 of the FOI Act, from the date you received this written notice about your charges liability and resumes on either the day you pay the charges or deposit or the day on which the Department makes a decision not to impose a charge.
-  </font>
+    <font size="10pt">
+        The time limit for processing your request is suspended, in accordance with section 31 of the FOI Act, from the date you received this written notice about your charges liability and resumes on either the day you pay the charges or deposit or the day on which the Department makes a decision not to impose a charge.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-If you agree to the charges, you will then accept liability for settlement of the debt with the Department upon completion of processing the FOI request as prescribed by section 29 of the FOI Act.  Once the agency has processed your FOI request it will determine the actual charges for which you are liable.  In the event that the actual charges are less than this estimate, you will only be liable for the lesser amount.  If the actual charges are more than this estimate, then you will only be liable for the lesser amount notified in this estimate, unless the Department releases every document to you in full, in which case it may impose the higher actual charges.
-  </font>
+    <font size="10pt">
+        If you agree to the charges, you will then accept liability for settlement of the debt with the Department upon completion of processing the FOI request as prescribed by section 29 of the FOI Act.  Once the agency has processed your FOI request it will determine the actual charges for which you are liable.  In the event that the actual charges are less than this estimate, you will only be liable for the lesser amount.  If the actual charges are more than this estimate, then you will only be liable for the lesser amount notified in this estimate, unless the Department releases every document to you in full, in which case it may impose the higher actual charges.
+    </font>
 </p>
 
 {% if assessment.include_refine_request_flag = True %}
-  <p align="left">
+<p align="left">
     <font size="10pt">
-It may be possible to reduce the charges by refining your request - for example, by limiting the date range of documents sought, by excluding draft versions of documents or duplicates of documents, or by refining the scope of the request more generally.  We would be happy to discuss options for refining your request with you.  If you wish to do so, please contact {{ assessment.contact_name }} on {{ assessment.contact_telephone }}.
+        It may be possible to reduce the charges by refining your request - for example, by limiting the date range of documents sought, by excluding draft versions of documents or duplicates of documents, or by refining the scope of the request more generally.  We would be happy to discuss options for refining your request with you.  If you wish to do so, please contact {{ assessment.contact_name }} on {{ assessment.contact_telephone }}.
     </font>
-  </p>
+</p>
 {% endif %}
 
 <p align="left">
-  <font size="10pt">
-Once your FOI request has been processed the outstanding charge amount is a debt created in favour of the Commonwealth and therefore the Department is obliged to pursue recovery of the debt in accordance with the Financial Management and Accountability Act 1997.
-  </font>
+    <font size="10pt">
+        Once your FOI request has been processed the outstanding charge amount is a debt created in favour of the Commonwealth and therefore the Department is obliged to pursue recovery of the debt in accordance with the Financial Management and Accountability Act 1997.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-Should you accept liability for your estimated charge your cheque for the deposit should be made payable to the Department of Health and Ageing and sent to:
-  </font>
+    <font size="10pt">
+        Should you accept liability for your estimated charge your cheque for the deposit should be made payable to the Department of Health and Ageing and sent to:
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-FOI Coordinator (MDP 350)
-Department of Health and Ageing
-GPO Box 9848
-CANBERRA  ACT  2601
-  </font>
+    <font size="10pt">
+        FOI Coordinator (MDP 350)
+        Department of Health and Ageing
+        GPO Box 9848
+        CANBERRA  ACT  2601
+    </font>
 </p>
 
 {% if assessment.third_party_consultation = True %}
-  <p align="left">
+<p align="left">
     <font size="10pt">
-      <b>Third Party Consultation</b>
+        <b>Third Party Consultation</b>
     </font>
-  </p>
-  <p align="left">
+</p>
+<p align="left">
     <font size="10pt">
-As your request relates to documents which concern {{ assessment.get_request_concerning_display }}, the Department is required to consult with the relevant third parties before making a decision on the release of those documents.  Also, the decision-maker may decide to consult a foreign government, authority of foreign government or an international organisation.  Subsections 15(6) and 15(7) of the FOI Act provides for an extension of 30 days to the statutory time limit for processing requests in these situations.  The time period for processing your request will be extended accordingly.
+        As your request relates to documents which concern {{ assessment.get_request_concerning_display }}, the Department is required to consult with the relevant third parties before making a decision on the release of those documents.  Also, the decision-maker may decide to consult a foreign government, authority of foreign government or an international organisation.  Subsections 15(6) and 15(7) of the FOI Act provides for an extension of 30 days to the statutory time limit for processing requests in these situations.  The time period for processing your request will be extended accordingly.
     </font>
-  </p>
+</p>
 {% endif %}
 
 <p align="left">
-  <font size="10pt">
-If you require clarification of any of the matters discussed in this letter you should contact {{ assessment.contact_name }} on {{ assessment.contact_telephone }}.
-  </font>
+    <font size="10pt">
+        If you require clarification of any of the matters discussed in this letter you should contact {{ assessment.contact_name }} on {{ assessment.contact_telephone }}.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-Yours Sincerely,
-  </font>
+    <font size="10pt">
+        Yours Sincerely,
+    </font>
 </p>

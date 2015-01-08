@@ -1,334 +1,334 @@
 <p align="center">
-  <!--fo:external-graphic src="img/DoHA_Logo_Fee_Letter"/-->
+    <!--fo:external-graphic src="img/DoHA_Logo_Fee_Letter"/-->
 </p>
 <p align="left">
-  <font size="10pt">
-Our ref: {{ case.title }}
-  </font>
+    <font size="10pt">
+        Our ref: {{ case.title }}
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-{{ assessment.third_party_title }}&#160;{{ assessment.third_party_name }}
-<br/>
-{{ assessment.third_party_organisation }}
-<br/>
-{{ assessment.third_party_address }}
-<br/>
-{{ assessment.third_party_postcode }}
-  </font>
+    <font size="10pt">
+        {{ assessment.third_party_title }}&#160;{{ assessment.third_party_name }}
+        <br/>
+        {{ assessment.third_party_organisation }}
+        <br/>
+        {{ assessment.third_party_address }}
+        <br/>
+        {{ assessment.third_party_postcode }}
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-Dear {{ assessment.third_party_title }}&#160;{{ assessment.third_party_name }}
-  </font>
+    <font size="10pt">
+        Dear {{ assessment.third_party_title }}&#160;{{ assessment.third_party_name }}
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-    <b>Freedom of Information Request</b>
-  </font>
+    <font size="10pt">
+        <b>Freedom of Information Request</b>
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-The Department has received a request under the Freedom of Information Act 1982 (FOI Act) for access to documents held by the Department.  The request relates to {{ assessment.third_party_request_general_description }}.
-  </font>
+    <font size="10pt">
+        The Department has received a request under the Freedom of Information Act 1982 (FOI Act) for access to documents held by the Department.  The request relates to {{ assessment.third_party_request_general_description }}.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-    <b>Why are we writing to you?</b>
-  </font>
+    <font size="10pt">
+        <b>Why are we writing to you?</b>
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-A number of documents have been identified as relevant to the request, all or some of which include information that relates to {% if assessment.include_s47_flag = True %}your organisation {% elif assessment.include_s47b_flag = True %}your organisation{% elif assessment.include_s47f_flag = True %}you{% elif assessment.include_s47g_flag = True %}you{% endif %}.  A {% if assessment.documents_attached_or_described = 'ATTACHED' %}copy of those documents{% else %}detailed list and description{% endif %} is enclosed.
-  </font>
+    <font size="10pt">
+        A number of documents have been identified as relevant to the request, all or some of which include information that relates to {% if assessment.include_s47_flag = True %}your organisation {% elif assessment.include_s47b_flag = True %}your organisation{% elif assessment.include_s47f_flag = True %}you{% elif assessment.include_s47g_flag = True %}you{% endif %}.  A {% if assessment.documents_attached_or_described = 'ATTACHED' %}copy of those documents{% else %}detailed list and description{% endif %} is enclosed.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-The decision-maker has formed the view that you may wish to comment on the possible release of these documents.  Accordingly, we are writing to you to give you an opportunity to comment before the decision-maker decides whether to release these documents to the FOI applicant.
-  </font>
+    <font size="10pt">
+        The decision-maker has formed the view that you may wish to comment on the possible release of these documents.  Accordingly, we are writing to you to give you an opportunity to comment before the decision-maker decides whether to release these documents to the FOI applicant.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-<b>What is the FOI Act?</b>
-  </font>
+    <font size="10pt">
+        <b>What is the FOI Act?</b>
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-The FOI Act grants every person a legal right to request access to documents in the possession of agencies of the Australian Government.  When a document is released to someone under FOI, there are no restrictions on what the recipient may do with the document (other than acting lawfully, for example, by not breaching copyright in the document).
-  </font>
+    <font size="10pt">
+        The FOI Act grants every person a legal right to request access to documents in the possession of agencies of the Australian Government.  When a document is released to someone under FOI, there are no restrictions on what the recipient may do with the document (other than acting lawfully, for example, by not breaching copyright in the document).
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-<b>Are there any limits on disclosure?</b>
-  </font>
+    <font size="10pt">
+        <b>Are there any limits on disclosure?</b>
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-The FOI Act contains a number of provisions that provide an exemption from release of documents under a range of circumstances.
-  </font>
+    <font size="10pt">
+        The FOI Act contains a number of provisions that provide an exemption from release of documents under a range of circumstances.
+    </font>
 </p>
 {% if assessment.include_s47_flag = True %}
 <p align="left">
-  <font size="10pt">
-    <b>Exemptions:</b>
-  </font>
+    <font size="10pt">
+        <b>Exemptions:</b>
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-The following exemption may apply to the document or documents.
-  </font>
+    <font size="10pt">
+        The following exemption may apply to the document or documents.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-    <i>section 47:</i>
-  </font>
+    <font size="10pt">
+        <i>section 47:</i>
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-One of these provisions, section 47, includes an exemption from release for documents that contain information relating to the business affairs of an organisation on various grounds.  In order to determine whether this provision applies to these documents, the agency has to establish that disclosure would:
-  </font>
+    <font size="10pt">
+        One of these provisions, section 47, includes an exemption from release for documents that contain information relating to the business affairs of an organisation on various grounds.  In order to determine whether this provision applies to these documents, the agency has to establish that disclosure would:
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-a)  reveal trade secrets;
-  </font>
+    <font size="10pt">
+        a)  reveal trade secrets;
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-b)  reveal information having a commercial value which could be, or could reasonably be expected to be, destroyed or diminished if disclosed.
-  </font>
+    <font size="10pt">
+        b)  reveal information having a commercial value which could be, or could reasonably be expected to be, destroyed or diminished if disclosed.
+    </font>
 </p>
 {% else %}
 <p align="left">
-  <font size="10pt">
-    <b>Conditional Exemptions:</b>
+    <font size="10pt">
+        <b>Conditional Exemptions:</b>
+    </font>
+</p>
+<p align="left">
+    <font size="10pt">
+        The following "conditional exemptions" may apply to the document or documents.  A conditionally exempt document is not exempt from release unless it would also, on balance, be contrary to the public interest to release it. 
+    </font>
+</p>
+<p align="left">
+    <font size="10pt">
+        Factors favouring access include (but are not limited to):
+        <ul align="left">
+          <li><font size="10pt">Promoting the objects of the FOI Act (a copy of the objects clause (section 3) is enclosed for your information);</font></li>
+          <li><font size="10pt">Informing debate on a matter of public importance;</font></li>
+          <li><font size="10pt">Promoting effective oversight of public expenditure; and</font></li>
+          <li><font size="10pt">Allowing a person access to his or her own personal information.</font></li>
+      </ul>
   </font>
 </p>
 <p align="left">
-  <font size="10pt">
-The following "conditional exemptions" may apply to the document or documents.  A conditionally exempt document is not exempt from release unless it would also, on balance, be contrary to the public interest to release it. 
-  </font>
-</p>
-<p align="left">
-  <font size="10pt">
-    Factors favouring access include (but are not limited to):
-    <ul align="left">
-      <li><font size="10pt">Promoting the objects of the FOI Act (a copy of the objects clause (section 3) is enclosed for your information);</font></li>
-      <li><font size="10pt">Informing debate on a matter of public importance;</font></li>
-      <li><font size="10pt">Promoting effective oversight of public expenditure; and</font></li>
-      <li><font size="10pt">Allowing a person access to his or her own personal information.</font></li>
-    </ul>
-  </font>
-</p>
-<p align="left">
-  <font size="10pt">
-Arguments against release need to counter-balance these considerations.  
-  </font>
+    <font size="10pt">
+        Arguments against release need to counter-balance these considerations.  
+    </font>
 </p>
 
-  {% if assessment.include_s47b_flag = True %}
-    <p align="left">
-      <font size="10pt">
+{% if assessment.include_s47b_flag = True %}
+<p align="left">
+    <font size="10pt">
         <i>section 47B:</i>
-      </font>
-    </p>
-    <p align="left">
-      <font size="10pt">
-    One of these provisions, section 47B, includes a conditional exemption from release for certain documents that contain information originating with, or received from, a State or an authority of a State.  In order to determine whether this provision applies to these documents, the agency has to establish that disclosure:
-      </font>
-    </p>
-    <p align="left">
-      <font size="10pt">
-    a) would or could reasonably be expected to cause damage to relations between the Commonwealth and a State; or
-      </font>
-    </p>
-    <p align="left">
-      <font size="10pt">
-    b) would divulge information or matter communicated in confidence by or on behalf of the Government of a State or an authority of the State, to the Government of the Commonwealth, to an authority of the Commonwealth or to a person receiving the communication on behalf of the Commonwealth or an authority of the Commonwealth.
-      </font>
-    </p>
-    {% elif assessment.include_s47f_flag = True %}
-    <p align="left">
-      <font size="10pt">
+    </font>
+</p>
+<p align="left">
+    <font size="10pt">
+        One of these provisions, section 47B, includes a conditional exemption from release for certain documents that contain information originating with, or received from, a State or an authority of a State.  In order to determine whether this provision applies to these documents, the agency has to establish that disclosure:
+    </font>
+</p>
+<p align="left">
+    <font size="10pt">
+        a) would or could reasonably be expected to cause damage to relations between the Commonwealth and a State; or
+    </font>
+</p>
+<p align="left">
+    <font size="10pt">
+        b) would divulge information or matter communicated in confidence by or on behalf of the Government of a State or an authority of the State, to the Government of the Commonwealth, to an authority of the Commonwealth or to a person receiving the communication on behalf of the Commonwealth or an authority of the Commonwealth.
+    </font>
+</p>
+{% elif assessment.include_s47f_flag = True %}
+<p align="left">
+    <font size="10pt">
         <i>section 47F:</i>
-      </font>
-    </p>
-    <p align="left">
-      <font size="10pt">
-    One of these provisions, section 47F, includes a conditional exemption from release for documents that contain personal information which it would be unreasonable to disclose.  In order to determine whether this provision applies to these documents, the agency has to establish that disclosure would:
-      </font>
-    </p>
-    <p align="left">
-      <font size="10pt">
-    a) involve the unreasonable disclosure of personal information.  Section 4 of the FOI Act defines personal information as information or an opinion about an identifiable individual; and
-      </font>
-    </p>
-    <p align="left">
-      <font size="10pt">
+    </font>
+</p>
+<p align="left">
+    <font size="10pt">
+        One of these provisions, section 47F, includes a conditional exemption from release for documents that contain personal information which it would be unreasonable to disclose.  In order to determine whether this provision applies to these documents, the agency has to establish that disclosure would:
+    </font>
+</p>
+<p align="left">
+    <font size="10pt">
+        a) involve the unreasonable disclosure of personal information.  Section 4 of the FOI Act defines personal information as information or an opinion about an identifiable individual; and
+    </font>
+</p>
+<p align="left">
+    <font size="10pt">
         b) be unreasonable having regard to the following matters:
         <ul align="left">
           <li><font size="10pt">the extent to which the information is well known;</font></li>
           <li><font size="10pt">whether the person to whom the information relates is known to be (or to have been) associated with the matters dealt with in the document;</font></li>
           <li><font size="10pt">the availability of the information from publicly accessible sources;</font></li>
           <li><font size="10pt">any other matter that the agency or Minister considers relevant.</font></li>
-        </ul>
-      </font>
-    </p>
-    {% elif assessment.include_s47g_flag = True %}
-    <p align="left">
-      <font size="10pt">
+      </ul>
+  </font>
+</p>
+{% elif assessment.include_s47g_flag = True %}
+<p align="left">
+    <font size="10pt">
         <i>section 47G:</i>
-      </font>
-    </p>
-    <p align="left">
-      <font size="10pt">
-    One of these provisions, section 47G, includes a conditional exemption from release for documents that contain information concerning a person in respect of his or her business or professional affairs or concerning the business, commercial or financial affairs of an organisation or undertaking, where disclosure:
-      </font>
-    </p>
-    <p align="left">
-      <font size="10pt">
-    a)  would, or could reasonable be expected to, unreasonably affect that person adversely in respect to his or her lawful business or professional affairs or that organisation or undertaking in respect of its lawful business, commercial or financial affairs; or
-      </font>
-    </p>
-    <p align="left">
-      <font size="10pt">
-    b)  could reasonably be expected to prejudice the future supply of information to the Department for the purpose of administration of a law of the Commonwealth or a Territory or the administration of matters administered by an agency.
-      </font>
-    </p>
-  {% endif %}
+    </font>
+</p>
+<p align="left">
+    <font size="10pt">
+        One of these provisions, section 47G, includes a conditional exemption from release for documents that contain information concerning a person in respect of his or her business or professional affairs or concerning the business, commercial or financial affairs of an organisation or undertaking, where disclosure:
+    </font>
+</p>
+<p align="left">
+    <font size="10pt">
+        a)  would, or could reasonable be expected to, unreasonably affect that person adversely in respect to his or her lawful business or professional affairs or that organisation or undertaking in respect of its lawful business, commercial or financial affairs; or
+    </font>
+</p>
+<p align="left">
+    <font size="10pt">
+        b)  could reasonably be expected to prejudice the future supply of information to the Department for the purpose of administration of a law of the Commonwealth or a Territory or the administration of matters administered by an agency.
+    </font>
+</p>
+{% endif %}
 
 {% endif %}
 
 <p align="left">
-  <font size="10pt">
-    <b>What should you do?</b>
-  </font>
+    <font size="10pt">
+        <b>What should you do?</b>
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-To enable the Department to give full consideration to this request, we are seeking your comments on whether the disclosure of the {% if assessment.documents_attached_or_described = 'ATTACHED' %}attached documents{% else %}documents outlined in the attached list{% endif %} would disclose {% if assessment.include_s47_flag = True %}your business affairs information{% elif assessment.include_s47b_flag = True %}State government information{% elif assessment.include_s47f_flag = True %}your personal information{% elif assessment.include_s47g_flag = True %}your business affairs information{% endif %} as outlined in the exemption provision above.  If you consider that the information would be exempt information, please provide reasons for this conclusion in order that the Department can substantiate your claim to the applicant. 
-  </font>
+    <font size="10pt">
+        To enable the Department to give full consideration to this request, we are seeking your comments on whether the disclosure of the {% if assessment.documents_attached_or_described = 'ATTACHED' %}attached documents{% else %}documents outlined in the attached list{% endif %} would disclose {% if assessment.include_s47_flag = True %}your business affairs information{% elif assessment.include_s47b_flag = True %}State government information{% elif assessment.include_s47f_flag = True %}your personal information{% elif assessment.include_s47g_flag = True %}your business affairs information{% endif %} as outlined in the exemption provision above.  If you consider that the information would be exempt information, please provide reasons for this conclusion in order that the Department can substantiate your claim to the applicant. 
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-The mere assertion that release of the documents {% if assessment.include_s47_flag = True %}would harm your business or disclose 'commercial-in-confidence' material{% elif assessment.include_s47b_flag = True %}would damage Commonwealth-State relations or disclose confidentially communicated material{% elif assessment.include_s47f_flag = True %}would constitute an unreasonable disclosure of your personal information{% elif assessment.include_s47g_flag = True %}would harm your business or disclose 'commercial-in-confidence' material{% endif %} is not sufficient to sustain exemption of the documents from disclosure under the FOI Act.  Evidence is needed to support the claim.
-  </font>
+    <font size="10pt">
+        The mere assertion that release of the documents {% if assessment.include_s47_flag = True %}would harm your business or disclose 'commercial-in-confidence' material{% elif assessment.include_s47b_flag = True %}would damage Commonwealth-State relations or disclose confidentially communicated material{% elif assessment.include_s47f_flag = True %}would constitute an unreasonable disclosure of your personal information{% elif assessment.include_s47g_flag = True %}would harm your business or disclose 'commercial-in-confidence' material{% endif %} is not sufficient to sustain exemption of the documents from disclosure under the FOI Act.  Evidence is needed to support the claim.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-In relation to any documents that you wish to argue are conditionally exempt from release, you may also wish to state why it would be contrary to the public interest for any such documents to be released.
-  </font>
+    <font size="10pt">
+        In relation to any documents that you wish to argue are conditionally exempt from release, you may also wish to state why it would be contrary to the public interest for any such documents to be released.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-    <b>The following points may help in your consideration:</b>
-  </font>
+    <font size="10pt">
+        <b>The following points may help in your consideration:</b>
+    </font>
 </p>
 {% if assessment.include_s47_flag = True %}
 <ul align="left">
-  <li><font size="10pt">does the document contain trade secrets relating to your business?</font></li>
-  <li><font size="10pt">does the document contain information of a commercial value?</font></li>
-  <li><font size="10pt">in what way would the commercial value of the information be diminished if it was disclosed?</font></li>
+    <li><font size="10pt">does the document contain trade secrets relating to your business?</font></li>
+    <li><font size="10pt">does the document contain information of a commercial value?</font></li>
+    <li><font size="10pt">in what way would the commercial value of the information be diminished if it was disclosed?</font></li>
 </ul>
 {% elif assessment.include_s47b_flag = True %}
 <ul align="left">
-  <li><font size="10pt">would disclosure have any prejudicial effect on the operations of the State, or on joint Commonwealth-State operations?</font></li>
-  <li><font size="10pt">why, and in what way, would disclosure cause damage to the relationship between the Commonwealth and State governments?</font></li>
-  <li><font size="10pt">when the State communicated the information to the Commonwealth, did it ask the Commonwealth to keep it confidential, or believe the Commonwealth would do so?  Did the Commonwealth agree to do so, or appear to act as if it was treating the information confidentially?  What evidence, if any, exists to substantiate any understanding of confidentiality?</font></li>
-  <li><font size="10pt">why would it be contrary to the public interest to release the document?</font></li>
+    <li><font size="10pt">would disclosure have any prejudicial effect on the operations of the State, or on joint Commonwealth-State operations?</font></li>
+    <li><font size="10pt">why, and in what way, would disclosure cause damage to the relationship between the Commonwealth and State governments?</font></li>
+    <li><font size="10pt">when the State communicated the information to the Commonwealth, did it ask the Commonwealth to keep it confidential, or believe the Commonwealth would do so?  Did the Commonwealth agree to do so, or appear to act as if it was treating the information confidentially?  What evidence, if any, exists to substantiate any understanding of confidentiality?</font></li>
+    <li><font size="10pt">why would it be contrary to the public interest to release the document?</font></li>
 </ul>
 {% elif assessment.include_s47f_flag = True %}
 <ul align="left">
-  <li><font size="10pt">is there anything about the nature of the information which makes it particularly sensitive or private?</font></li>
-  <li><font size="10pt">would any serious adverse consequences flow from disclosure?</font></li>
-  <li><font size="10pt">in what circumstances was the information provided to the government?  Was there any expectation or agreement that it would be kept confidential?</font></li>
-  <li><font size="10pt">is the information out of date, inaccurate or misleading in any way?</font></li>
-  <li><font size="10pt">is the information well-known, or publicly available from another source?</font></li>
-  <li><font size="10pt">why would it be contrary to the public interest to release the document?</font></li>
+    <li><font size="10pt">is there anything about the nature of the information which makes it particularly sensitive or private?</font></li>
+    <li><font size="10pt">would any serious adverse consequences flow from disclosure?</font></li>
+    <li><font size="10pt">in what circumstances was the information provided to the government?  Was there any expectation or agreement that it would be kept confidential?</font></li>
+    <li><font size="10pt">is the information out of date, inaccurate or misleading in any way?</font></li>
+    <li><font size="10pt">is the information well-known, or publicly available from another source?</font></li>
+    <li><font size="10pt">why would it be contrary to the public interest to release the document?</font></li>
 </ul>
 {% elif assessment.include_s47g_flag = True %}
 <ul align="left">
-  <li><font size="10pt">would it be possible for your competitors to use the particular information to harm your business?  If so, how?</font></li>
-  <li><font size="10pt">is the information widely known, or accessible through other means such as the Australian Securities and Investments Commission register?</font></li>
-  <li><font size="10pt">is there any other sense in which disclosure would have a negative impact on your business?  What are the likely consequences of disclosure?</font></li>
-  <li><font size="10pt">why you would no longer provide that information to the Government? You should note that where information is supplied to the Australian Government under compulsion or in support of a claim for a benefit from the Australian Government, it is unlikely that a decision-maker would accept that the information would not be provided in the future.</font></li>
-  <li><font size="10pt">why would it be contrary to the public interest to release the document ?</font></li>
+    <li><font size="10pt">would it be possible for your competitors to use the particular information to harm your business?  If so, how?</font></li>
+    <li><font size="10pt">is the information widely known, or accessible through other means such as the Australian Securities and Investments Commission register?</font></li>
+    <li><font size="10pt">is there any other sense in which disclosure would have a negative impact on your business?  What are the likely consequences of disclosure?</font></li>
+    <li><font size="10pt">why you would no longer provide that information to the Government? You should note that where information is supplied to the Australian Government under compulsion or in support of a claim for a benefit from the Australian Government, it is unlikely that a decision-maker would accept that the information would not be provided in the future.</font></li>
+    <li><font size="10pt">why would it be contrary to the public interest to release the document ?</font></li>
 </ul>
 {% endif %}
 
 <p align="left">
-  <font size="10pt">
-Section 22 of the FOI Act allows for information within a document to be deleted where it is exempt and for the rest of the document to be released.  In your response please address the question of whether deletion of sensitive information from the documents could eliminate or substantially reduce any objections you might have to the release of the remainder of the documents.  Without strong supporting evidence, global exemption claims over whole documents are unlikely to be successful in the event that the applicant appeals to the Information Commissioner or the Administrative Appeals Tribunal.
-  </font>
+    <font size="10pt">
+        Section 22 of the FOI Act allows for information within a document to be deleted where it is exempt and for the rest of the document to be released.  In your response please address the question of whether deletion of sensitive information from the documents could eliminate or substantially reduce any objections you might have to the release of the remainder of the documents.  Without strong supporting evidence, global exemption claims over whole documents are unlikely to be successful in the event that the applicant appeals to the Information Commissioner or the Administrative Appeals Tribunal.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-    <b>What will the Department do?</b>
-  </font>
+    <font size="10pt">
+        <b>What will the Department do?</b>
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-Although the decision-maker will not be bound by any contentions you put forward, they will give careful consideration to any contentions when coming to a decision to release or not release the documents.  The decision-maker will write to you again with the decision regarding the documents and provide you with information on your rights of appeal in the event that the decision is to release documents which you may not want released.
-  </font>
+    <font size="10pt">
+        Although the decision-maker will not be bound by any contentions you put forward, they will give careful consideration to any contentions when coming to a decision to release or not release the documents.  The decision-maker will write to you again with the decision regarding the documents and provide you with information on your rights of appeal in the event that the decision is to release documents which you may not want released.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-Keep in mind that your response could be seen by the Information Commissioner, the Administrative Appeals Tribunal, and potentially the FOI applicant, in the event that the Department's decision is appealed to the Information Commissioner or Tribunal.
-  </font>
+    <font size="10pt">
+        Keep in mind that your response could be seen by the Information Commissioner, the Administrative Appeals Tribunal, and potentially the FOI applicant, in the event that the Department's decision is appealed to the Information Commissioner or Tribunal.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-    <b>How quickly should you respond and what will happen if you do not respond?</b>
-  </font>
+    <font size="10pt">
+        <b>How quickly should you respond and what will happen if you do not respond?</b>
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-You need to provide your response by {{ assessment.respond_by_date }} to enable the Department to make a decision on this FOI request within the statutory timeframe for making decisions.  If you do not respond by this time, the decision-maker will be unable to take your views into account, and may decide to release the documents to the applicant.
-  </font>
+    <font size="10pt">
+        You need to provide your response by {{ assessment.respond_by_date }} to enable the Department to make a decision on this FOI request within the statutory timeframe for making decisions.  If you do not respond by this time, the decision-maker will be unable to take your views into account, and may decide to release the documents to the applicant.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-    <b>How can you contact us?</b>
-  </font>
+    <font size="10pt">
+        <b>How can you contact us?</b>
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-Please forward your response, if any, to:
-  </font>
+    <font size="10pt">
+        Please forward your response, if any, to:
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-The FOI Coordinator (MDP 350)
-<br/>
-Department of Health and Ageing
-<br/>
-GPO Box 9848
-<br/>
-CANBERRA  ACT  2601
-  </font>
+    <font size="10pt">
+        The FOI Coordinator (MDP 350)
+        <br/>
+        Department of Health and Ageing
+        <br/>
+        GPO Box 9848
+        <br/>
+        CANBERRA  ACT  2601
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-    <b>Publication</b>
-  </font>
+    <font size="10pt">
+        <b>Publication</b>
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-The department must publish information that has been released to an applicant in response to a freedom of information request, subject to certain exceptions.  This publication is known as a disclosure log.  The disclosure log requirement does not apply to personal information about any person if it would be unreasonable to publish the information nor to information about the business, commercial, financial or professional affairs of any person if publication of that information would be unreasonable.  You might also like to express a view regarding the publication of any information which you consider it would be unreasonable to publish.  Please note that the Department is not required to consult you further on any decision to publish information released to the FOI applicant.  The decision to publish information is not subject to review either by the Department or the Australian Information Commissioner.  It is however, open to any person to make a complaint to the Australian Information Commissioner about how an agency handles an FOI request.
-  </font>
+    <font size="10pt">
+        The department must publish information that has been released to an applicant in response to a freedom of information request, subject to certain exceptions.  This publication is known as a disclosure log.  The disclosure log requirement does not apply to personal information about any person if it would be unreasonable to publish the information nor to information about the business, commercial, financial or professional affairs of any person if publication of that information would be unreasonable.  You might also like to express a view regarding the publication of any information which you consider it would be unreasonable to publish.  Please note that the Department is not required to consult you further on any decision to publish information released to the FOI applicant.  The decision to publish information is not subject to review either by the Department or the Australian Information Commissioner.  It is however, open to any person to make a complaint to the Australian Information Commissioner about how an agency handles an FOI request.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-You should be aware that the disclosure log facilitates publication to the world at large of information released under FOI to individual applicants.  This reinforces the objective of the FOI Act to promote a pro-disclosure culture across government and to increase recognition that information held by government is a national resource.
-  </font>
+    <font size="10pt">
+        You should be aware that the disclosure log facilitates publication to the world at large of information released under FOI to individual applicants.  This reinforces the objective of the FOI Act to promote a pro-disclosure culture across government and to increase recognition that information held by government is a national resource.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-If you require clarification of any of the matters discussed in this letter you should contact {{ assessment.third_party_contact_name }} on {{ assessment.third_party_contact_telephone }}.
-  </font>
+    <font size="10pt">
+        If you require clarification of any of the matters discussed in this letter you should contact {{ assessment.third_party_contact_name }} on {{ assessment.third_party_contact_telephone }}.
+    </font>
 </p>
 <p align="left">
-  <font size="10pt">
-Yours sincerely
-  </font>
+    <font size="10pt">
+        Yours sincerely
+    </font>
 </p>
