@@ -149,6 +149,24 @@ class Assessment(models.Model):
     def __unicode__(self):
         return self.case.title
 
+    def search_and_retrieval_charges(self):
+        return self.search_and_retrieval_time * 15
+
+    def decision_making_time_free(self):
+        return 5 if self.decision_making_time >= 5 else self.decision_making_time
+
+    def decision_making_time_expensed(self):
+        return 0 if self.decision_making_time <= 5 else self.decision_making_time - 5
+
+    def decision_making_charges(self):
+        return self.decision_making_time_expensed() * 20
+
+    def other_access_charges(self):
+        return self.other_access_time * 30
+
+    def total_charges(self):
+        return self.search_and_retrieval_charges() + self.decision_making_charges() + self.photocopy_charges + self.other_access_charges() + self.postage_charges
+
     objects = AssessmentManager()
 
 class Outcome(models.Model):
