@@ -1,0 +1,15 @@
+{% extends "foi/case_base.html" %}
+
+{% block activepage %}case_referrals{% endblock %}
+
+{% block case_content %}
+    <div class="row">
+        <div class="large-12 columns">
+            <form action="" method="post">
+                <h3>Referrals</h3>
+                <p>Pretty soon you're going to be able to refer a case to someone else, and it's going to be awesome</p>
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+{% endblock %}

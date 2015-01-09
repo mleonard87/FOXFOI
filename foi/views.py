@@ -89,6 +89,11 @@ def delete_comment(request, case_id, comment_id):
         return render(request, 'foi/delete_comment.html', {'case': case, 'comment': comment})
 
 @login_required
+def case_referrals(request, case_id):
+    case = get_object_or_404(Case, pk = case_id)
+    return render(request, 'foi/referrals.html', {'case': case})
+
+@login_required
 def case_assessment(request, case_id):
     case = get_object_or_404(Case, pk = case_id)
     if request.method == 'POST':
