@@ -8,11 +8,20 @@ class CaseManager(models.Manager):
         case.save()
         return case
 
+    def get_user_cases(self, user):
+        return self.filter(created_by = user).order_by('-created_date')
+
 class CommentManager(models.Manager):
     def create_comment(self, case, subject, body, user):
         comment = self.create(case = case, subject = subject, body = body, created_date = timezone.now(), created_by = user)
         comment.save()
         return comment
+
+class ReferralManager(models.Manager):
+    def create_referral(self, case, subject, body, refer_to):
+        referral = self.create(case = case, subject = subject, body = body, refer_to = refer_to, created_date = timezone.now())
+        referral.save()
+        return referral
 
 class AssessmentManager(models.Manager):
     def create_assessment(self, case):
@@ -164,6 +173,18 @@ class Comment(models.Model):
         return self.subject
 
     objects = CommentManager()
+
+class Referral(models.Model):
+    case = models.ForeignKey(Case)
+    subject = models.CharField(max_length = 100)
+    body = models.TextField()
+    refer_to = models.ForeignKey(User)
+    created_date = models.DateTimeField()
+
+    def __unicode__(self):
+        return self.subject
+
+    objects = ReferralManager()
 
 class Assessment(models.Model):
 

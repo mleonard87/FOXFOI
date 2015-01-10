@@ -1,5 +1,6 @@
 from django import forms
-from foi.models import Case, Comment, Assessment, Outcome, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
+from django.contrib.auth.models import User
+from foi.models import Case, Comment, Referral, Assessment, Outcome, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
 
 class CaseForm(forms.ModelForm):
     class Meta:
@@ -62,6 +63,17 @@ class CommentForm(forms.ModelForm):
         widgets = {
             'subject': forms.TextInput(attrs = {'placeholder': 'Enter a subject for this comment'}),
             'body': forms.Textarea(attrs = {'placeholder': 'Enter a body for this comment'})
+        }
+
+class ReferralForm(forms.ModelForm):
+    refer_to = forms.ModelChoiceField(queryset = User.objects.all())
+
+    class Meta:
+        model = Referral
+        fields = ['subject', 'body', 'refer_to']
+        widgets = {
+            'subject': forms.TextInput(attrs = {'placeholder': 'Enter a subject for this referral'}),
+            'body': forms.Textarea(attrs = {'placeholder': 'Enter a body for this referral'})
         }
 
 class AssessmentForm(forms.ModelForm):

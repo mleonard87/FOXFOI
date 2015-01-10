@@ -1,4 +1,4 @@
-{% extends "foi/case_base.html" %}
+{% extends "foi/case_index_base.html" %}
 
 {% block activepage %}case_referrals{% endblock %}
 
@@ -6,10 +6,46 @@
     <div class="row">
         <div class="large-12 columns">
             <form action="" method="post">
-                <h3>Referrals</h3>
-                <p>Pretty soon you're going to be able to refer a case to someone else, and it's going to be awesome</p>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_subject" class="{% if form.subject.errors %}error{% endif %}"/>Subject:
+                        {{ form.subject }}
+                        </label>
+                        {% if form.subject.errors %}
+                        <small class="error">{{ form.subject.errors }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_body" class="{% if form.body.errors %}error{% endif %}"/>Body:
+                        {{ form.body }}
+                        </label>
+                        {% if form.body.errors %}
+                        <small class="error">{{ form.body.errors }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label for="id_refer_to" class="{% if form.refer_to.errors %}error{% endif %}"/>Refer To:
+                        {{ form.refer_to }}
+                        </label>
+                        {% if form.refer_to.errors %}
+                        <small class="error">{{ form.refer_to.errors }}</small>
+                        {% endif %}
+                    </div>
+                </div>
                 {% csrf_token %}
+                <input type="submit" value="Save" class="button">
             </form>
         </div>
     </div>
 {% endblock %}
+
+{% block pagetitleMaster %}{% endblock %}
+{% block newitemMaster %}{% endblock %}
+{% block editURL %}{% url 'foi:edit_referral' case.id indexitem.id %}{% endblock %}
+{% block editItemDisplayName %}{{ indexitem.subject }}{% endblock %}
+{% block deleteURL %}{% url 'foi:delete_referral' case.id indexitem.id %}{% endblock %}
+{% block additionalInfo %}Sent to {{ indexitem.target_user }} on {{ indexitem.created_date }}{% endblock %}

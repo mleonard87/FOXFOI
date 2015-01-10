@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Edit Referral</h1>
+        <form action="{% url 'foi:edit_referral' case.id referral.id %}" method="post">
+            <div class="row">
+                <div class="large-12 columns">
+                    <label for="id_subject" class="{% if form.subject.errors %}error{% endif %}"/>Subject:
+                    {{ form.subject }}
+                    </label>
+                    {% if form.subject.errors %}
+                    <small class="error">{{ form.subject.errors }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <label for="id_body" class="{% if form.body.errors %}error{% endif %}"/>Body:
+                    {{ form.body }}
+                    </label>
+                    {% if form.body.errors %}
+                    <small class="error">{{ form.body.errors }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <label for="id_refer_to" class="{% if form.refer_to.errors %}error{% endif %}"/>Refer To:
+                    {{ form.refer_to }}
+                    </label>
+                    {% if form.refer_to.errors %}
+                    <small class="error">{{ form.refer_to.errors }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            {% csrf_token %}
+            <input type="submit" value="Save" class="button">
+        </form>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+</div>

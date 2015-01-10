@@ -7,12 +7,12 @@ from foxfoi.ajax import *
 
 from django_xhtml2pdf.utils import generate_pdf, render_to_pdf_response
 
-from foi.models import Case, Comment, Assessment, Outcome, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
-from foi.forms import CaseForm, CaseEnquirerForm, CommentForm, AssessmentForm, AssessmentFeeForm, AssessmentThirdPartyForm, OutcomeForm, InternalReviewForm, InformationCommissionerAppealForm, AdministrativeAppealsTribunalForm
+from foi.models import Case, Comment, Referral, Assessment, Outcome, InternalReview, InformationCommissionerAppeal, AdministrativeAppealsTribunal
+from foi.forms import CaseForm, CaseEnquirerForm, CommentForm, ReferralForm, AssessmentForm, AssessmentFeeForm, AssessmentThirdPartyForm, OutcomeForm, InternalReviewForm, InformationCommissionerAppealForm, AdministrativeAppealsTribunalForm
 
 @login_required
 def index_case(request):
-    cases = Case.objects.order_by('-created_date')
+    cases = Case.objects.get_user_cases(request.user)
     return render(request, 'foi/index.html', {'indexitems': cases})
 
 @login_required
@@ -91,7 +91,39 @@ def delete_comment(request, case_id, comment_id):
 @login_required
 def case_referrals(request, case_id):
     case = get_object_or_404(Case, pk = case_id)
-    return render(request, 'foi/referrals.html', {'case': case})
+    referrals = Referral.objects.filter(case = case).order_by('-created_date')
+    if request.method == 'POST':
+        form = ReferralForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            Referral.objects.create_referral(case, cd['subject'], cd['body'], cd['refer_to'])
+            return HttpResponseRedirect(reverse('foi:case_referrals', args = (case_id,)))
+    else:
+        form = ReferralForm()
+    return render(request, 'foi/referrals.html', {'case': case, 'indexitems': referrals, 'form': form})
+
+@login_required
+def edit_referral(request, case_id, referral_id):
+    case = get_object_or_404(Case, pk = case_id)
+    referral = get_object_or_404(Referral, pk = referral_id)
+    if request.method == 'POST':
+        form = ReferralForm(request.POST, instance = referral)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('foi:case_referrals', args = (case_id,)))
+    else:
+        form = ReferralForm(instance = referral)
+    return render(request, 'foi/edit_referral.html', {'case': case, 'referral': referral, 'form': form})
+
+@login_required
+def delete_referral(request, case_id, referral_id):
+    case = get_object_or_404(Case, pk = case_id)
+    referral = get_object_or_404(Referral, pk = referral_id)
+    if request.method == 'POST':
+        referral.delete()
+        return HttpResponseRedirect(reverse('foi:case_referrals', args = (case_id,)))
+    else:
+        return render(request, 'foi/delete_referral.html', {'case': case, 'referral': referral})
 
 @login_required
 def case_assessment(request, case_id):
