@@ -13,7 +13,8 @@ from foi.forms import CaseForm, CaseEnquirerForm, CommentForm, ReferralForm, Ass
 @login_required
 def index_case(request):
     cases = Case.objects.get_user_cases(request.user)
-    return render(request, 'foi/index.html', {'indexitems': cases})
+    referrals = Referral.objects.get_user_referrals(request.user)
+    return render(request, 'foi/index.html', {'indexitems': cases, 'referrals': referrals})
 
 @login_required
 def new_case(request):

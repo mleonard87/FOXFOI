@@ -48,4 +48,4 @@
 {% block editURL %}{% url 'foi:edit_referral' case.id indexitem.id %}{% endblock %}
 {% block editItemDisplayName %}{{ indexitem.subject }}{% endblock %}
 {% block deleteURL %}{% url 'foi:delete_referral' case.id indexitem.id %}{% endblock %}
-{% block additionalInfo %}Sent to {{ indexitem.target_user }} on {{ indexitem.created_date }}{% endblock %}
+{% block additionalInfo %}Sent to {{ indexitem.refer_to }} on {{ indexitem.created_date }}{% endblock %}

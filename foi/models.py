@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.db.models import Q
 from django.contrib.auth.models import User
 
 class CaseManager(models.Manager):
@@ -9,7 +10,12 @@ class CaseManager(models.Manager):
         return case
 
     def get_user_cases(self, user):
-        return self.filter(created_by = user).order_by('-created_date')
+        referrals = Referral.objects.get_user_referral_cases(user)
+
+        q = Q(created_by = user) 
+        q |= Q(pk__in = referrals)
+
+        return self.filter(q).order_by('-created_date')
 
 class CommentManager(models.Manager):
     def create_comment(self, case, subject, body, user):
@@ -22,6 +28,12 @@ class ReferralManager(models.Manager):
         referral = self.create(case = case, subject = subject, body = body, refer_to = refer_to, created_date = timezone.now())
         referral.save()
         return referral
+
+    def get_user_referrals(self, user):
+        return self.filter(refer_to = user).distinct().values_list('case', flat = True)
+
+    def get_user_referral_cases(self, user):
+        return self.filter(refer_to = user).values('case')
 
 class AssessmentManager(models.Manager):
     def create_assessment(self, case):
