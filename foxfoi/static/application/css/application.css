@@ -21,6 +21,32 @@ html {
   margin: 0;
 }
 
+.inline-form {
+  display: inline-block;
+  margin: 0;
+}
+
+/***************************
+ *** Key Term Styles
+ ***************************/
+.toggleStatusLarge {
+  font-size: 24px;
+  vertical-align: middle;
+}
+
+.toggleStatusSmall {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.statusActive {
+  color: green;
+}
+
+.statusInactive {
+  color: red;
+}
+
 /***************************
  *** Index Screen Styles
  ***************************/
@@ -30,6 +56,10 @@ div.indexItemContainer {
 
 div.indexItemContainer > span.indexItemTitle {
   padding-bottom: 5px;
+}
+
+div.indexItemContainer > span.indexItemTitleOther {
+  font-size: 0.9em;
 }
 
 div.indexItemContainer > .additionalInfo {

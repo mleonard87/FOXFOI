@@ -13,12 +13,12 @@
                     </span>
                     <span class="right">
                         <span>
-                            <form class="keyterm-change-status-form" action="{% url 'keyterms:change_status' indexitem.id %}" method="post" style="display: inline-block; margin: 0;">
+                            <form class="keyterm-change-status-form inline-form" action="{% url 'keyterms:change_status' indexitem.id %}" method="post">
                                 <a href="#" class="keyterm-status">
                                     {% if indexitem.is_active %}
-                                        <i class="fi-record" style="font-size: 24px; color: green; vertical-align: middle;"></i>
+                                        <i class="fi-record toggleStatusLarge statusActive"></i>
                                     {% else %}
-                                        <i class="fi-record" style="font-size: 24px; color: red; vertical-align: middle;"></i>
+                                        <i class="fi-record toggleStatusLarge statusInactive"></i>
                                     {% endif %}
                                 </a>
                                 {% csrf_token %}
@@ -33,12 +33,12 @@
                             <div style="padding-top: 10px; height: 22px;">
                                 <span><a href="{% url 'keyterms:edit_keyterm' subitem.id %}">{{subitem.name}}</a></span>
                                 <span class="right">
-                                    <form class="keyterm-change-status-form" action="{% url 'keyterms:change_status' subitem.id %}" method="post" style="display: inline-block; margin: 0;">
+                                    <form class="keyterm-change-status-form inline-form" action="{% url 'keyterms:change_status' subitem.id %}" method="post">
                                         <a href="#" class="keyterm-status">
                                             {% if subitem.is_active %}
-                                                <i class="fi-record" style="font-size: 20px; color: green; vertical-align: middle;"></i>
+                                                <i class="fi-record toggleStatusSmall statusActive"></i>
                                             {% else %}
-                                                <i class="fi-record" style="font-size: 20px; color: red; vertical-align: middle;"></i>
+                                                <i class="fi-record toggleStatusSmall statusInactive"></i>
                                             {% endif %}
                                         </a>
                                         {% csrf_token %}

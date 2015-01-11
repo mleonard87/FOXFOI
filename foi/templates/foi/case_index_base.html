@@ -19,7 +19,11 @@
                                     <span class="indexItemTitle">
                                         <a href="{% block editURL %}{% endblock %}" data-reveal-id="deleteItemModal" data-reveal-ajax="true">{% block editItemDisplayName %}{% endblock %}</a>
                                     </span>
+                                    <span class="indexItemTitleOther">
+                                        {% block indexItemTitleOtherText %}{% endblock %}
+                                    </span>
                                     <span class="indexLinks">
+                                        {% block indexLinkAdditional %}{% endblock %}
                                         {% block deleteLinkMaster %}[<a href="{% block deleteURL %}{% endblock %}" data-reveal-id="deleteItemModal" data-reveal-ajax="true">Delete</a>]{% endblock %}
                                     </span>
                                     {% block additionalInfoMaster %}<span class="additionalInfo">{% block additionalInfo %}{% endblock %}</span>{% endblock %}

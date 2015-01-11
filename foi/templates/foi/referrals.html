@@ -47,5 +47,14 @@
 {% block newitemMaster %}{% endblock %}
 {% block editURL %}{% url 'foi:edit_referral' case.id indexitem.id %}{% endblock %}
 {% block editItemDisplayName %}{{ indexitem.subject }}{% endblock %}
+{% block indexItemTitleOtherText %}[{{ indexitem.get_status_display }}]{% endblock %}
+{% block indexLinkAdditional %}
+    {% if indexitem.refer_to = user and indexitem.is_open %}
+        <form class="complete-referral-form inline-form" action="{% url 'foi:complete_referral' case.id indexitem.id %}" method="post">
+            [<a href="#">Complete Referral</a>]
+            {% csrf_token %}
+        </form>
+    {% endif %}
+{% endblock %}
 {% block deleteURL %}{% url 'foi:delete_referral' case.id indexitem.id %}{% endblock %}
 {% block additionalInfo %}Sent to {{ indexitem.refer_to }} on {{ indexitem.created_date }}{% endblock %}

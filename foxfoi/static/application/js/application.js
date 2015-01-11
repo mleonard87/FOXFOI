@@ -9,4 +9,8 @@ $(document).ready(function() {
     $(".keyterm-status").on("click", function() {
         $(this).parents(".keyterm-change-status-form").submit();
     });
+
+    $(".complete-referral-form").on("click", function() {
+        $(this).submit();
+    });
 });

@@ -30,10 +30,10 @@ class ReferralManager(models.Manager):
         return referral
 
     def get_user_referrals(self, user):
-        return self.filter(refer_to = user).distinct().values_list('case', flat = True)
+        return self.filter(refer_to = user, status = 'OPEN').distinct().values_list('case', flat = True)
 
     def get_user_referral_cases(self, user):
-        return self.filter(refer_to = user).values('case')
+        return self.filter(refer_to = user, status = 'OPEN').values('case')
 
 class AssessmentManager(models.Manager):
     def create_assessment(self, case):
@@ -187,14 +187,28 @@ class Comment(models.Model):
     objects = CommentManager()
 
 class Referral(models.Model):
+
+    REFERRAL_STATUS = (
+        ('OPEN', 'Open'),
+        ('COMPLETE', 'Complete')
+    )
+
     case = models.ForeignKey(Case)
     subject = models.CharField(max_length = 100)
     body = models.TextField()
     refer_to = models.ForeignKey(User)
+    status = models.CharField(max_length = 10, choices = REFERRAL_STATUS, default = "OPEN")
     created_date = models.DateTimeField()
 
     def __unicode__(self):
         return self.subject
+
+    def is_open(self):
+        return self.status == 'OPEN'
+
+    def complete_referral(self):
+        self.status = 'COMPLETE'
+        self.save()
 
     objects = ReferralManager()
 

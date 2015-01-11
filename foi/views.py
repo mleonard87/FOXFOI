@@ -127,6 +127,14 @@ def delete_referral(request, case_id, referral_id):
         return render(request, 'foi/delete_referral.html', {'case': case, 'referral': referral})
 
 @login_required
+def complete_referral(request, case_id, referral_id):
+    referral = get_object_or_404(Referral, pk = referral_id, case = case_id)
+    if request.method == 'POST':
+        referral.complete_referral()
+        return HttpResponseRedirect(reverse('foi:index_case'))
+    return HttpResponseRedirect(reverse('foi:case_referrals', args = (case_id,)))
+
+@login_required
 def case_assessment(request, case_id):
     case = get_object_or_404(Case, pk = case_id)
     if request.method == 'POST':
