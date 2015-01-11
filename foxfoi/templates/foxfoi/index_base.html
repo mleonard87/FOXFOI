@@ -12,7 +12,9 @@
                         <hr/>
                         <div class="indexItemContainer">
                             <span class="indexItemTitle">
-                                <a href="{% block edititemlink %}{% endblock %}" data-reveal-id="itemModal" data-reveal-ajax="true">{% block editItemDisplayName %}{% endblock %}</a>
+                                {% block editLinkMaster %}
+                                    <a href="{% block edititemlink %}{% endblock %}" data-reveal-id="itemModal" data-reveal-ajax="true">{% block editItemDisplayName %}{% endblock %}</a>
+                                {% endblock %}
                             </span>
                             <span class="indexItemTitleOther">
                                 {% block indexItemTitleOtherText %}{% endblock %}

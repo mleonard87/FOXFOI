@@ -2,10 +2,11 @@
 
 {% block pagetitle %}FOI Cases{% endblock %}
 {% block newitemlink %}{% url 'foi:new_case' %}{% endblock %}
-{% block edititemlink %}{% url 'foi:edit_case' indexitem.id %}{% endblock %}
-{% block editItemDisplayName %}
-    {{ indexitem.title }}
-    {% if indexitem.id in referrals %}[Referred]{% endif %}
+{% block editLinkMaster %}
+    <a href="{% url 'foi:edit_case' indexitem.id %}">
+        {{ indexitem.title }}
+        {% if indexitem.id in referrals %}[Referred]{% endif %}
+    </a>
 {% endblock %}
 {% block deleteLink %}{% url 'foi:delete_case' indexitem.id %}{% endblock %}
 {% block additionalInfo %}Created on {{ indexitem.created_date }}{% endblock %}
