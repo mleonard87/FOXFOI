@@ -6,16 +6,27 @@
         <div class="large-12 columns">
             {% block pagetitleMaster %}<h1>{% block pagetitle %}{% endblock %}</h1>{% endblock %}
             {% block newitemMaster %}<p><a href="{% block newitemlink %}{% endblock %}">Add New</a></p>{% endblock %}
-            {% for indexitem in indexitems %}
-                <hr/>
-                <div class="indexItemContainer">
-                    <span class="indexItemTitle"><a href="{% block edititemlink %}{% endblock %}">{% block editItemDisplayName %}{% endblock %}</a></span>
-                    <span class="indexLinks">
-                        {% block deleteLinkMaster %}[<a href="{% block deleteLink %}{% endblock %}">Delete</a>]{% endblock %}
-                    </span>
-                    {% block additionalInfoMaster %}<div class="additionalInfo">{% block additionalInfo %}{% endblock %}</div>{% endblock %}
-                </div>
-            {% endfor %}
+            <div class="indexItemListContainer">
+                {% for indexitem in indexitems %}
+                    <div class="indexRowContainer">
+                        <hr/>
+                        <div class="indexItemContainer">
+                            <span class="indexItemTitle">
+                                <a href="{% block edititemlink %}{% endblock %}" data-reveal-id="itemModal" data-reveal-ajax="true">{% block editItemDisplayName %}{% endblock %}</a>
+                            </span>
+                            <span class="indexItemTitleOther">
+                                {% block indexItemTitleOtherText %}{% endblock %}
+                            </span>
+                            <span class="indexLinks">
+                                {% block indexLinkAdditional %}{% endblock %}
+                                {% block deleteLinkMaster %}[<a href="{% block deleteLink %}{% endblock %}" data-reveal-id="itemModal" data-reveal-ajax="true">Delete</a>]{% endblock %}
+                            </span>
+                            {% block additionalInfoMaster %}<div class="additionalInfo">{% block additionalInfo %}{% endblock %}</div>{% endblock %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
+    <div id="itemModal" class="reveal-modal" data-reveal></div>
 {% endblock %}

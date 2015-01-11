@@ -17,14 +17,14 @@
                                 <hr/>
                                 <div class="indexItemContainer">
                                     <span class="indexItemTitle">
-                                        <a href="{% block editURL %}{% endblock %}" data-reveal-id="deleteItemModal" data-reveal-ajax="true">{% block editItemDisplayName %}{% endblock %}</a>
+                                        <a href="{% block editURL %}{% endblock %}" data-reveal-id="itemModal" data-reveal-ajax="true">{% block editItemDisplayName %}{% endblock %}</a>
                                     </span>
                                     <span class="indexItemTitleOther">
                                         {% block indexItemTitleOtherText %}{% endblock %}
                                     </span>
                                     <span class="indexLinks">
                                         {% block indexLinkAdditional %}{% endblock %}
-                                        {% block deleteLinkMaster %}[<a href="{% block deleteURL %}{% endblock %}" data-reveal-id="deleteItemModal" data-reveal-ajax="true">Delete</a>]{% endblock %}
+                                        {% block deleteLinkMaster %}[<a href="{% block deleteURL %}{% endblock %}" data-reveal-id="itemModal" data-reveal-ajax="true">Delete</a>]{% endblock %}
                                     </span>
                                     {% block additionalInfoMaster %}<span class="additionalInfo">{% block additionalInfo %}{% endblock %}</span>{% endblock %}
                                 </div>
@@ -33,8 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div id="editItemModal" class="reveal-modal" data-reveal></div>
-            <div id="deleteItemModal" class="reveal-modal" data-reveal></div>
+            <div id="itemModal" class="reveal-modal" data-reveal></div>
         </div>
     </div>
 {% endblock %}

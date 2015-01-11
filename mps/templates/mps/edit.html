@@ -1,26 +1,22 @@
-{% extends "foxfoi/base.html" %}
-
-{% block content %}
-    <div class="row">
-        <div class="large-12 columns">
-            <h1>Edit MP</h1>
-            <form action="" method="post">
-                {% for field in form %}
-                    <div class="row">
-                        <div class="large-12 columns">
-                            <label class="{% if field.errors %}error{% endif %}">{{ field.label_tag }}
-                            {{ field }}
-                            </label>
-                            {% if field.errors %}
-                                <small class="error">{{ field.errors }}</small>
-                            {% endif %}
-                        </div>
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Edit MP</h1>
+        <form action="" method="post">
+            {% for field in form %}
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label class="{% if field.errors %}error{% endif %}">{{ field.label_tag }}
+                        {{ field }}
+                        </label>
+                        {% if field.errors %}
+                            <small class="error">{{ field.errors }}</small>
+                        {% endif %}
                     </div>
-                {% endfor %}
-                {% csrf_token %}
-                <input type="submit" value="Save" class="button">
-                <a href="{% url 'mps:index_mp' %}" class="button">Cancel</a>
-            </form>
-        </div>
+                </div>
+            {% endfor %}
+            {% csrf_token %}
+            <input type="submit" value="Save" class="button">
+            <a href="{% url 'mps:index_mp' %}" class="button">Cancel</a>
+        </form>
     </div>
-{% endblock %}
+</div>

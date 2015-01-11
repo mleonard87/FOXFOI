@@ -1,57 +1,44 @@
-{% extends "foxfoi/base.html" %}
+{% extends "foxfoi/index_base.html" %}
 
-{% block content %}
-    <div class="row">
-        <div class="large-12 columns">
-            <h1>Key Terms</h1>
-            <p><a href="{% url 'keyterms:new_keyterm' %}">Add New</a></p>
-            {% for indexitem in indexitems %}
-                <hr/>
-                <div class="indexItemContainer" style="height: 25px;">
-                    <span class="indexItemTitle">
-                        <a href="{% url 'keyterms:edit_keyterm' indexitem.id %}">{{ indexitem.name }}</a> [<a href="{% url 'keyterms:new_keyterm' indexitem.id %}">Add New</a>]
-                    </span>
-                    <span class="right">
-                        <span>
-                            <form class="keyterm-change-status-form inline-form" action="{% url 'keyterms:change_status' indexitem.id %}" method="post">
-                                <a href="#" class="keyterm-status">
-                                    {% if indexitem.is_active %}
-                                        <i class="fi-record toggleStatusLarge statusActive"></i>
-                                    {% else %}
-                                        <i class="fi-record toggleStatusLarge statusInactive"></i>
-                                    {% endif %}
-                                </a>
-                                {% csrf_token %}
-                            </form>
-                        </span>
-                        <span>
-                            [<a href="{% url 'keyterms:delete_keyterm' indexitem.id %}">Delete</a>]
-                        </span>
-                    </span>
-                    <div class="additionalInfo">
-                        {% for subitem in indexitem.sortedKeyTerms %}
-                            <div style="padding-top: 10px; height: 22px;">
-                                <span><a href="{% url 'keyterms:edit_keyterm' subitem.id %}">{{subitem.name}}</a></span>
-                                <span class="right">
-                                    <form class="keyterm-change-status-form inline-form" action="{% url 'keyterms:change_status' subitem.id %}" method="post">
-                                        <a href="#" class="keyterm-status">
-                                            {% if subitem.is_active %}
-                                                <i class="fi-record toggleStatusSmall statusActive"></i>
-                                            {% else %}
-                                                <i class="fi-record toggleStatusSmall statusInactive"></i>
-                                            {% endif %}
-                                        </a>
-                                        {% csrf_token %}
-                                    </form>
-                                    <span>
-                                        [<a href="{% url 'keyterms:delete_keyterm' subitem.id %}">Delete</a>]
-                                    </span>
-                                </span>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endfor %}
+{% block pagetitle %}Key Terms{% endblock %}
+{% block newitemlink %}{% url 'keyterms:new_keyterm' %}{% endblock %}
+{% block edititemlink %}{% url 'keyterms:edit_keyterm' indexitem.id %}{% endblock %}
+{% block editItemDisplayName %}{{ indexitem.name }}{% endblock %}
+{% block indexItemTitleOtherText %}[<a href="{% url 'keyterms:new_keyterm' indexitem.id %}">Add New</a>]{% endblock %}
+{% block indexLinkAdditional %}
+    <span>
+        <form class="keyterm-change-status-form inline-form" action="{% url 'keyterms:change_status' indexitem.id %}" method="post">
+            <a href="#" class="keyterm-status">
+                {% if indexitem.is_active %}
+                    <i class="fi-record toggleStatusLarge statusActive"></i>
+                {% else %}
+                    <i class="fi-record toggleStatusLarge statusInactive"></i>
+                {% endif %}
+            </a>
+            {% csrf_token %}
+        </form>
+    </span>
+{% endblock %}
+{% block deleteLink %}{% url 'keyterms:delete_keyterm' indexitem.id %}{% endblock %}
+{% block additionalInfo %}
+    {% for subitem in indexitem.sortedKeyTerms %}
+        <div class="keyTermChildContainer">
+            <span><a href="{% url 'keyterms:edit_keyterm' subitem.id %}" data-reveal-id="itemModal" data-reveal-ajax="true">{{subitem.name}}</a></span>
+            <span class="right">
+                <form class="keyterm-change-status-form inline-form" action="{% url 'keyterms:change_status' subitem.id %}" method="post">
+                    <a href="#" class="keyterm-status">
+                        {% if subitem.is_active %}
+                            <i class="fi-record toggleStatusSmall statusActive"></i>
+                        {% else %}
+                            <i class="fi-record toggleStatusSmall statusInactive"></i>
+                        {% endif %}
+                    </a>
+                    {% csrf_token %}
+                </form>
+                <span>
+                    [<a href="{% url 'keyterms:delete_keyterm' subitem.id %}" data-reveal-id="itemModal" data-reveal-ajax="true">Delete</a>]
+                </span>
+            </span>
         </div>
-    </div>
+    {% endfor %}
 {% endblock %}
