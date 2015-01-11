@@ -1,7 +1,7 @@
 <div class="row">
     <div class="large-12 columns">
         <h1>Edit Key Term</h1>
-        <form action="" method="post">
+        <form action="{% url 'keyterms:edit_keyterm' keyterm.id %}" method="post">
             <div class="row">
                 <div class="large-12 columns">
                     <label for="id_name" class="{% if form.name.errors %}error{% endif %}"/>Name:

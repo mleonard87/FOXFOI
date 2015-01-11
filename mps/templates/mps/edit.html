@@ -1,7 +1,7 @@
 <div class="row">
     <div class="large-12 columns">
         <h1>Edit MP</h1>
-        <form action="" method="post">
+        <form action="{% url 'mps:edit_mp' mp.id %}" method="post">
             {% for field in form %}
                 <div class="row">
                     <div class="large-12 columns">
