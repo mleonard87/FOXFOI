@@ -2,6 +2,8 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.conf import settings
 from foxfoi.ajax import *
 
 from mps.models import MP
@@ -9,7 +11,15 @@ from mps.forms import MPForm
 
 @login_required
 def index_mp(request):
-    mps = MP.objects.order_by('name')
+    mp_list = MP.objects.order_by('name')
+    paginator = Paginator(mp_list, settings.PAGINATION_PAGES)
+    page = request.GET.get('page')
+    try:
+        mps = paginator.page(page)
+    except PageNotAnInteger:
+        mps = paginator.page(1)
+    except EmptyPage:
+        mps = paginator.page(paginator.num_pages)
     return render(request, 'mps/index.html', {'indexitems': mps})
 
 @login_required

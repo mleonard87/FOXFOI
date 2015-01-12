@@ -76,3 +76,11 @@ div.indexItemContainer > .additionalInfo {
 div.indexItemContainer > span.indexLinks {
   float: right;
 }
+
+/***************************
+ *** Pagination Styles
+ ***************************/
+.pagination {
+  text-align: center;
+  font-size: 0.9em;
+}

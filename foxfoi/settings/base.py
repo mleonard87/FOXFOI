@@ -24,6 +24,10 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+PAGINATION_PAGES = os.environ.get('PAGINATION_PAGES')
+if PAGINATION_PAGES == None:
+    PAGINATION_PAGES = 20
+
 
 # Application definition
 

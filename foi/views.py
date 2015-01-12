@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.conf import settings
 from foxfoi.ajax import *
 
 from django_xhtml2pdf.utils import generate_pdf, render_to_pdf_response
@@ -12,8 +14,16 @@ from foi.forms import CaseForm, CaseEnquirerForm, CommentForm, ReferralForm, Ass
 
 @login_required
 def index_case(request):
-    cases = Case.objects.get_user_cases(request.user)
+    case_list = Case.objects.get_user_cases(request.user)
     referrals = Referral.objects.get_user_referrals(request.user)
+    paginator = Paginator(case_list, settings.PAGINATION_PAGES)
+    page = request.GET.get('page')
+    try:
+        cases = paginator.page(page)
+    except PageNotAnInteger:
+        cases = paginator.page(1)
+    except EmptyPage:
+        cases = paginator.page(paginator.num_pages)
     return render(request, 'foi/index.html', {'indexitems': cases, 'referrals': referrals})
 
 @login_required

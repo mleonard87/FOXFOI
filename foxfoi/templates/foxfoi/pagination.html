@@ -1,0 +1,16 @@
+{% if indexitems.has_other_pages %}
+    <hr/>
+    <div class="pagination">
+        <span class="step-links">
+            {% if indexitems.has_previous %}
+                <a href="?page={{ indexitems.previous_page_number }}">Previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ indexitems.number }} of {{ indexitems.paginator.num_pages }}
+            </span>
+            {% if indexitems.has_next %}
+                <a href="?page={{ indexitems.next_page_number }}">Next</a>
+            {% endif %}
+        </span>
+    </div>
+{% endif %}

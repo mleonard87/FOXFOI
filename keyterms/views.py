@@ -2,6 +2,8 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.conf import settings
 from foxfoi.ajax import *
 
 from keyterms.models import KeyTerm
@@ -9,7 +11,15 @@ from keyterms.forms import KeyTermForm
 
 @login_required
 def index_keyterms(request):
-    keyterms = KeyTerm.objects.get_parent_key_terms();
+    keyterm_list = KeyTerm.objects.get_parent_key_terms();
+    paginator = Paginator(keyterm_list, settings.PAGINATION_PAGES)
+    page = request.GET.get('page')
+    try:
+        keyterms = paginator.page(page)
+    except PageNotAnInteger:
+        keyterms = paginator.page(1)
+    except EmptyPage:
+        keyterms = paginator.page(paginator.num_pages)
     return render(request, 'keyterms/index.html', {'indexitems': keyterms})
 
 @login_required
