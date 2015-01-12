@@ -9,12 +9,12 @@ class MPManager(models.Manager):
 
     def search_mps(self, search_term):
         if search_term != None:
-            q = Q(title__contains = search_term) 
-            q |= Q(name__contains = search_term) 
-            q |= Q(party__contains = search_term) 
-            q |= Q(constituency__contains = search_term) 
-            q |= Q(address__contains = search_term) 
-            q |= Q(postcode__contains = search_term)
+            q = Q(title__icontains = search_term) 
+            q |= Q(name__icontains = search_term) 
+            q |= Q(party__icontains = search_term) 
+            q |= Q(constituency__icontains = search_term) 
+            q |= Q(address__icontains = search_term) 
+            q |= Q(postcode__icontains = search_term)
 
             return self.filter(q).order_by('name')
 

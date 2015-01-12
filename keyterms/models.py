@@ -20,8 +20,8 @@ class KeyTermManager(models.Manager):
         # filter on matching children and use this to match on parent PKs
         # otherwise, Django uses a LEFT OUTER JOIN which leads to multiple rows
         if search_term != None:
-            child_name_matches = self.filter(name__contains = search_term).values('parent')
-            q_search = Q(name__contains = search_term)
+            child_name_matches = self.filter(name__icontains = search_term).values('parent')
+            q_search = Q(name__icontains = search_term)
             q_search |= Q(pk__in = child_name_matches)
 
             q = Q(q, q_search)

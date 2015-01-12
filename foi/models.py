@@ -16,7 +16,7 @@ class CaseManager(models.Manager):
         q |= Q(pk__in = referrals)
 
         if search_term != None:
-            q = Q(q, title__contains = search_term)
+            q = Q(q, title__icontains = search_term)
 
         return self.filter(q).order_by('-created_date')
 
