@@ -4,15 +4,27 @@ from django.core.exceptions import ValidationError
 
 class KeyTermManager(models.Manager):
     def create_key_term(self, name, parent):
-        kt = self.create(name = name, status = 'ACTIVE', parent = parent)
+        status = None
+        if parent != None:
+            status = parent.status
+        else:
+            status = 'ACTIVE'
+
+        kt = self.create(name = name, status = status, parent = parent)
         kt.save()
         return kt
 
     def get_parent_key_terms(self, search_term):
         q = Q(parent = None)
 
+        # filter on matching children and use this to match on parent PKs
+        # otherwise, Django uses a LEFT OUTER JOIN which leads to multiple rows
         if search_term != None:
-            q &= Q(name__contains = search_term) 
+            child_name_matches = self.filter(name__contains = search_term).values('parent')
+            q_search = Q(name__contains = search_term)
+            q_search |= Q(pk__in = child_name_matches)
+
+            q = Q(q, q_search)
 
         return self.filter(q).order_by('name')
 

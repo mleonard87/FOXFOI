@@ -57,11 +57,9 @@ def edit_keyterm(request, kt_id):
 @login_required
 def change_status(request, kt_id):
     keyterm = get_object_or_404(KeyTerm, pk = kt_id)
-    keyterms = KeyTerm.objects.get_parent_key_terms();
     if request.method == 'POST':
         keyterm.change_status()
-        return HttpResponseRedirect(reverse('keyterms:index_keyterms'))
-    return render(request, 'keyterms/index.html', {'indexitems': keyterms})
+    return HttpResponseRedirect(reverse('keyterms:index_keyterms'))
 
 @login_required
 def delete_keyterm(request, kt_id):

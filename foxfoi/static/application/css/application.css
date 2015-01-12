@@ -70,6 +70,7 @@ div.indexItemContainer > span.indexItemTitleOther {
 div.indexItemContainer > .additionalInfo {
   display: block;
   padding-top: 5px;
+  padding-bottom: 5px;
   font-size: 0.9em;
 }
 
