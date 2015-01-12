@@ -11,8 +11,13 @@ from keyterms.forms import KeyTermForm
 
 @login_required
 def index_keyterms(request):
-    keyterm_list = KeyTerm.objects.get_parent_key_terms();
+    keyterm_list = KeyTerm.objects.get_parent_key_terms(request.GET.get('searchTerm'));
     paginator = Paginator(keyterm_list, settings.PAGINATION_PAGES)
+
+    queries = request.GET.copy()
+    if queries.has_key('page'):
+        del queries['page']
+        
     page = request.GET.get('page')
     try:
         keyterms = paginator.page(page)
@@ -20,7 +25,7 @@ def index_keyterms(request):
         keyterms = paginator.page(1)
     except EmptyPage:
         keyterms = paginator.page(paginator.num_pages)
-    return render(request, 'keyterms/index.html', {'indexitems': keyterms})
+    return render(request, 'keyterms/index.html', {'indexitems': keyterms, 'queries': queries})
 
 @login_required
 def new_keyterm(request, parent_id):

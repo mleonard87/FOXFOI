@@ -1,10 +1,24 @@
 from django.db import models
+from django.db.models import Q
 
 class MPManager(models.Manager):
     def create_mp(self, title, name, party, constituency, address, postcode):
         mp = self.create(title = title, name = name, party = party, constituency = constituency, address = address, postcode = postcode)
         mp.save()
         return mp
+
+    def search_mps(self, search_term):
+        if search_term != None:
+            q = Q(title__contains = search_term) 
+            q |= Q(name__contains = search_term) 
+            q |= Q(party__contains = search_term) 
+            q |= Q(constituency__contains = search_term) 
+            q |= Q(address__contains = search_term) 
+            q |= Q(postcode__contains = search_term)
+
+            return self.filter(q).order_by('name')
+
+        return self.order_by('name')
 
 class MP(models.Model):
     title = models.CharField(max_length = 20)

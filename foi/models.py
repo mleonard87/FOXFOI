@@ -9,11 +9,14 @@ class CaseManager(models.Manager):
         case.save()
         return case
 
-    def get_user_cases(self, user):
+    def get_user_cases(self, user, search_term):
         referrals = Referral.objects.get_user_referral_cases(user)
 
         q = Q(created_by = user) 
         q |= Q(pk__in = referrals)
+
+        if search_term != None:
+            q = Q(q, title__contains = search_term)
 
         return self.filter(q).order_by('-created_date')
 

@@ -6,6 +6,16 @@
         <div class="large-12 columns">
             {% block pagetitleMaster %}<h1>{% block pagetitle %}{% endblock %}</h1>{% endblock %}
             {% block newitemMaster %}<p><a href="{% block newitemlink %}{% endblock %}">Add New</a></p>{% endblock %}
+            <form action="" method="get" class="inline-form" style="width: 100%;">
+                <div class="row collapse">
+                    <div class="small-10 columns">
+                        <input type="text" id="indexItemSearch" name="searchTerm" placeholder="Search"/>
+                    </div>
+                    <div class="small-2 columns">
+                        <input type="submit" value="Search" class="button postfix">
+                    </div>
+                </div>
+            </form>
             <div class="indexItemListContainer">
                 {% for indexitem in indexitems %}
                     <div class="indexRowContainer">

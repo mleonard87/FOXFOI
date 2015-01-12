@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 from django.core.exceptions import ValidationError
 
 class KeyTermManager(models.Manager):
@@ -7,9 +8,13 @@ class KeyTermManager(models.Manager):
         kt.save()
         return kt
 
-    def get_parent_key_terms(self):
-        kts = self.filter(parent = None).order_by('name')
-        return kts
+    def get_parent_key_terms(self, search_term):
+        q = Q(parent = None)
+
+        if search_term != None:
+            q &= Q(name__contains = search_term) 
+
+        return self.filter(q).order_by('name')
 
 class KeyTerm(models.Model):
 

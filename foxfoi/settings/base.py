@@ -26,7 +26,7 @@ ALLOWED_HOSTS = []
 
 PAGINATION_PAGES = os.environ.get('PAGINATION_PAGES')
 if PAGINATION_PAGES == None:
-    PAGINATION_PAGES = 20
+    PAGINATION_PAGES = 10
 
 
 # Application definition

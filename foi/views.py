@@ -14,9 +14,14 @@ from foi.forms import CaseForm, CaseEnquirerForm, CommentForm, ReferralForm, Ass
 
 @login_required
 def index_case(request):
-    case_list = Case.objects.get_user_cases(request.user)
+    case_list = Case.objects.get_user_cases(request.user, request.GET.get('searchTerm'))
     referrals = Referral.objects.get_user_referrals(request.user)
     paginator = Paginator(case_list, settings.PAGINATION_PAGES)
+
+    queries = request.GET.copy()
+    if queries.has_key('page'):
+        del queries['page']
+        
     page = request.GET.get('page')
     try:
         cases = paginator.page(page)
@@ -24,7 +29,7 @@ def index_case(request):
         cases = paginator.page(1)
     except EmptyPage:
         cases = paginator.page(paginator.num_pages)
-    return render(request, 'foi/index.html', {'indexitems': cases, 'referrals': referrals})
+    return render(request, 'foi/index.html', {'indexitems': cases, 'referrals': referrals, 'queries': queries})
 
 @login_required
 def new_case(request):

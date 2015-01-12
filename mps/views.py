@@ -11,8 +11,13 @@ from mps.forms import MPForm
 
 @login_required
 def index_mp(request):
-    mp_list = MP.objects.order_by('name')
+    mp_list = MP.objects.search_mps(request.GET.get('searchTerm'))
     paginator = Paginator(mp_list, settings.PAGINATION_PAGES)
+
+    queries = request.GET.copy()
+    if queries.has_key('page'):
+        del queries['page']
+
     page = request.GET.get('page')
     try:
         mps = paginator.page(page)
@@ -20,7 +25,7 @@ def index_mp(request):
         mps = paginator.page(1)
     except EmptyPage:
         mps = paginator.page(paginator.num_pages)
-    return render(request, 'mps/index.html', {'indexitems': mps})
+    return render(request, 'mps/index.html', {'indexitems': mps, 'queries': queries})
 
 @login_required
 def new_mp(request):
