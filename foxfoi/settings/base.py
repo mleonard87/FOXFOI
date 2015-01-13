@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from .secrets import get_secret
+
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
@@ -85,14 +87,15 @@ ROOT_URLCONF = 'foxfoi.urls'
 
 WSGI_APPLICATION = 'foxfoi.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/dev/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': get_secret('DB_NAME'),
+        'USER': get_secret('DB_USERNAME'),
+        'PASSWORD': get_secret('DB_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5432',
+        'ATOMIC_REQUESTS': True,
     }
 }
 

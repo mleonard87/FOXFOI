@@ -42,3 +42,4 @@ venv
 *.sqlite3
 
 secrets.json
+.vagrant
