@@ -35,7 +35,7 @@
 
 {% block pagetitleMaster %}{% endblock %}
 {% block newitemMaster %}{% endblock %}
-{% block editURL %}{% url 'foi:edit_comment' case.id indexitem.id %}{% endblock %}
+{% block edititemlink %}{% url 'foi:edit_comment' case.id indexitem.id %}{% endblock %}
 {% block editItemDisplayName %}{{ indexitem.subject }}{% endblock %}
-{% block deleteURL %}{% url 'foi:delete_comment' case.id indexitem.id %}{% endblock %}
+{% block deleteLink %}{% url 'foi:delete_comment' case.id indexitem.id %}{% endblock %}
 {% block additionalInfo %}Created by {{ indexitem.created_by }} on {{ indexitem.created_date }}{% endblock %}
