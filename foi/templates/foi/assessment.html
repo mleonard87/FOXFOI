@@ -6,45 +6,93 @@
     <div class="row">
         <div class="large-12 columns">
             <form action="" method="post">
-                <h3>Case Assessment</h3>
-                {% for field in assessment_form %}
-                    <div class="row">
-                        <div class="large-12 columns">
-                            <label class="{% if field.errors %}error{% endif %}">{{ field.label_tag }}
-                            {{ field }}
-                            </label>
-                            {% if field.errors %}
-                                <small class="error">{{ field.errors }}</small>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endfor %}
-                <h3>Fees</h3>
-                {% for field in assessment_fee_form %}
-                    <div class="row">
-                        <div class="large-12 columns">
-                            <label class="{% if field.errors %}error{% endif %}">{{ field.label_tag }}
-                            {{ field }}
-                            </label>
-                            {% if field.errors %}
-                                <small class="error">{{ field.errors }}</small>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endfor %}
-                <h3>Third Party Consultation</h3>
-                {% for field in assessment_third_party_form %}
-                    <div class="row">
-                        <div class="large-12 columns">
-                            <label class="{% if field.errors %}error{% endif %}">{{ field.label_tag }}
-                            {{ field }}
-                            </label>
-                            {% if field.errors %}
-                                <small class="error">{{ field.errors }}</small>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endfor %}
+                <h3 class="case-section-heading">Case Assessment</h3>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_form.third_party_consultation cols=6 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_form.precedents cols=6 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_form.precedent_details cols=12 %}
+                </div>
+
+                <h3 class="case-section-heading">Fees</h3>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.fee_flag cols=12 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.search_and_retrieval_time cols=6 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.decision_making_time cols=6 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.photocopy_charges cols=6 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.other_access_time cols=6 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.postage_charges cols=6 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.initial_deposit cols=6 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.request_general_description cols=12 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.include_refine_request_flag cols=6 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.include_third_party_consultation_flag cols=6 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.request_concerning cols=12 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.contact_name cols=6 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.contact_telephone cols=6 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.fee_notice_issued_flag cols=4 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.fee_paid_flag cols=4 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.fee_limit_flag cols=4 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.fee_notice_issued_date cols=4 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.fee_payment_required_date cols=4 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_fee_form.fee_received_date cols=4 %}
+                </div>
+
+                <h3 class="case-section-heading">Third Party Consultation</h3>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_request_general_description cols=12 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.documents_attached_or_described cols=12 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.include_s47_flag cols=3 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.include_s47b_flag cols=3 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.include_s47f_flag cols=3 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.include_s47g_flag cols=3 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.respond_by_date cols=12 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_contact_name cols=6 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_contact_telephone cols=6 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_title cols=2 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_name cols=10 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_department cols=12 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_organisation cols=12 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_address cols=12 %}
+                </div>
+                <div class="row">
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_postcode cols=12 %}
+                </div>
+
                 {% csrf_token %}
                 <input type="submit" value="Save" class="button">
                 <h3>Correspondence Documents</h3>
