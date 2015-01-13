@@ -6,58 +6,23 @@
     <div class="row">
         <div class="large-12 columns">
             <form action="" method="post">
-                <h3>List A (Specific Outcomes)</h3>
+                <h3 class="case-section-heading">List A (Specific Outcomes)</h3>
                 <div class="row">
-                    <div class="large-12 columns">
-                        <label class="{% if form.foi_outcomes.errors %}error{% endif %}">Specific Outcome
-                        {{ form.foi_outcomes }}
-                        </label>
-                        {% if form.foi_outcomes.errors %}
-                            <small class="error">{{ form.foi_outcomes.errors }}</small>
-                        {% endif %}
-                    </div>
+                    {% include "foxfoi/form_field.html" with field=form.foi_outcomes cols=12 %}
                 </div>
-                <h3>List B (Exemptions/Exception/Certificates)</h3>
+                <h3 class="case-section-heading">List B (Exemptions/Exception/Certificates)</h3>
                 <div class="row">
-                    <div class="large-12 columns">
-                        <label class="{% if form.foi_exemptions.errors %}error{% endif %}">FOI Exemption
-                        {{ form.foi_exemptions }}
-                        </label>
-                        {% if form.foi_exemptions.errors %}
-                            <small class="error">{{ form.foi_exemptions.errors }}</small>
-                        {% endif %}
-                    </div>
+                    {% include "foxfoi/form_field.html" with field=form.foi_exemptions cols=12 %}
                 </div>
                 <div class="row">
-                    <div class="large-12 columns">
-                        <label class="{% if form.foi_conditional_exemptions.errors %}error{% endif %}">FOI Conditional Exemption
-                        {{ form.foi_conditional_exemptions }}
-                        </label>
-                        {% if form.foi_conditional_exemptions.errors %}
-                            <small class="error">{{ form.foi_conditional_exemptions.errors }}</small>
-                        {% endif %}
-                    </div>
+                    {% include "foxfoi/form_field.html" with field=form.foi_conditional_exemptions cols=12 %}
                 </div>
                 <div class="row">
-                    <div class="large-12 columns">
-                        <label class="{% if form.certificates.errors %}error{% endif %}">Certificate
-                        {{ form.certificates }}
-                        </label>
-                        {% if form.certificates.errors %}
-                            <small class="error">{{ form.certificates.errors }}</small>
-                        {% endif %}
-                    </div>
+                    {% include "foxfoi/form_field.html" with field=form.certificates cols=12 %}
                 </div>
-                <h3>List C (Disclosure Outcomes)</h3>
+                <h3 class="case-section-heading">List C (Disclosure Outcomes)</h3>
                 <div class="row">
-                    <div class="large-12 columns">
-                        <label class="{% if form.disclosure_outcomes.errors %}error{% endif %}">Disclosure Outcome
-                        {{ form.disclosure_outcomes }}
-                        </label>
-                        {% if form.disclosure_outcomes.errors %}
-                            <small class="error">{{ form.disclosure_outcomes.errors }}</small>
-                        {% endif %}
-                    </div>
+                    {% include "foxfoi/form_field.html" with field=form.disclosure_outcomes cols=12 %}
                 </div>
                 {% csrf_token %}
                 <input type="submit" value="Save" class="button">

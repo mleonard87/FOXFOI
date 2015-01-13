@@ -30,7 +30,10 @@ html {
   margin: 0;
 }
 
-.case-section-heading {}
+.case-section-heading {
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 1.0rem;
+}
 
 /***************************
  *** Key Term Styles

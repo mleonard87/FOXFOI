@@ -163,6 +163,13 @@ class OutcomeForm(forms.ModelForm):
     class Meta:
         model = Outcome
         fields = ['foi_outcomes', 'foi_exemptions', 'foi_conditional_exemptions', 'disclosure_outcomes', 'certificates']
+        labels = {
+            'foi_outcomes': ('Specific Outcome'),
+            'foi_exemptions': ('FOI Exemption'),
+            'foi_conditional_exemptions': ('FOI Conditional Exemption'),
+            'disclosure_outcomes': ('Disclosure Outcome'),
+            'certificates': ('Certificate')
+        }
 
 class InternalReviewForm(forms.ModelForm):
     class Meta:
