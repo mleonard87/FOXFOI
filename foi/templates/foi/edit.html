@@ -4,14 +4,64 @@
 
 {% block case_content %}
     <form action="" method="post">
-        <h3>Case Details</h3>
-        {% for field in case_form %}
-            {% include "foxfoi/form_field.html" with field=field cols=12 %}
-        {% endfor %}
-        <h3>Enquirer Details</h3>
-        {% for field in case_enquirer_form %}
-            {% include "foxfoi/form_field.html" with field=field cols=12 %}
-        {% endfor %}
+        <h3 class="case-section-heading">Case Details</h3>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_form.title cols=10 %}
+            {% include "foxfoi/form_field.html" with field=case_form.urgent_flag cols=2 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_form.subject cols=12 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_form.received_date cols=6 %}
+            {% include "foxfoi/form_field.html" with field=case_form.enquiry_date cols=6 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_form.enquiry_ref cols=12 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_form.enquiry_method cols=6 %}
+            {% include "foxfoi/form_field.html" with field=case_form.response_method cols=6 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_form.enquiry_description cols=12 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_form.handling_instructions cols=12 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_form.addressee_name cols=12 %}
+        </div>
+
+        <h3 class="case-section-heading">Enquirer Details</h3>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_title cols=2 %}
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_name cols=10 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_department cols=12 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_organisation cols=12 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_address cols=12 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_postcode cols=12 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_telephone cols=6 %}
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_email_address cols=6 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_enquirer_group cols=6 %}
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_industry_body cols=6 %}
+        </div>
+        <div class="row">
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_region cols=12 %}
+        </div>
+
         {% csrf_token %}
         <input type="submit" value="Save" class="button">
     </form>
