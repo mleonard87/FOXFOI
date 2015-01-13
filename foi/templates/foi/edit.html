@@ -39,16 +39,12 @@
             {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_name cols=10 %}
         </div>
         <div class="row">
-            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_department cols=12 %}
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_department cols=6 %}
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_organisation cols=6 %}
         </div>
         <div class="row">
-            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_organisation cols=12 %}
-        </div>
-        <div class="row">
-            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_address cols=12 %}
-        </div>
-        <div class="row">
-            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_postcode cols=12 %}
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_address cols=10 %}
+            {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_postcode cols=2 %}
         </div>
         <div class="row">
             {% include "foxfoi/form_field.html" with field=case_enquirer_form.enquirer_telephone cols=6 %}

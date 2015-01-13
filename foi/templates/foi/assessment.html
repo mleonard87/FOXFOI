@@ -81,31 +81,34 @@
                     {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_name cols=10 %}
                 </div>
                 <div class="row">
-                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_department cols=12 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_department cols=6 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_organisation cols=6 %}
                 </div>
                 <div class="row">
-                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_organisation cols=12 %}
-                </div>
-                <div class="row">
-                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_address cols=12 %}
-                </div>
-                <div class="row">
-                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_postcode cols=12 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_address cols=10 %}
+                    {% include "foxfoi/form_field.html" with field=assessment_third_party_form.third_party_postcode cols=2 %}
                 </div>
 
                 {% csrf_token %}
                 <input type="submit" value="Save" class="button">
-                <h3>Correspondence Documents</h3>
-                <h4>Fee Document</h4>
+            </form>
+
+            <h3>Correspondence Documents</h3>
+            <fieldset>
+                <legend>Fee Document</legend>
                 <a href="{% url 'foi:preview_fee_doc' case.id %}" class="button">Preview</a>
                 <a href="{% url 'foi:download_fee_doc' case.id %}" class="button">Download</a>
-                <h4>Notice of Consultation - Applicant</h4>
+            </fieldset>
+            <fieldset>
+                <legend>Notice of Consultation - Applicant</legend>
                 <a href="{% url 'foi:preview_notice_of_consultation_applicant' case.id %}" class="button">Preview</a>
                 <a href="{% url 'foi:download_notice_of_consultation_applicant' case.id %}" class="button">Download</a>
-                <h4>Notice of Consultation - Third Party</h4>
+            </fieldset>
+            <fieldset>
+                <legend>Notice of Consultation - Third Party</legend>
                 <a href="{% url 'foi:preview_notice_of_consultation_third_party' case.id %}" class="button">Preview</a>
                 <a href="{% url 'foi:download_notice_of_consultation_third_party' case.id %}" class="button">Download</a>
-            </form>
+            </fieldset>
         </div>
     </div>
 {% endblock %}
